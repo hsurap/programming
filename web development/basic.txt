@@ -1,0 +1,13 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>BASIC</title>
+	</head>
+	<body>
+		<h1>adding photo</h1>
+		<img src="download.png" alt="photo" width="212" height="230">
+		<h2> second heading </h2>
+		<p> A <strong><em>paragraph </em></strong>is a series of related sentences developing a central idea, called the topic. Try to think about paragraphs in terms of thematic unity: <br><hr>a <em>paragraph</em> is a sentence or a group of sentences that supports one central, unified idea. Paragraphs add one idea at a time to your broader argument.</p> 
+	</body>
+</html>
