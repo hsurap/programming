@@ -1,0 +1,71 @@
+<DOCTYPE html>
+<html>
+	<head>
+		<title>SMALL BUSSINESS PAGE </title>
+	</head>
+	<body>
+		<head>
+
+			<div>
+
+				<div>
+
+					<div>
+						<img src="images\sbp.jpg" alt="sbp"> 
+						
+					</div>
+
+
+					<div>
+						<h2>LOSO</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe rem nisi accusamus error velit animi non ipsa placeat. Recusandae, suscipit, soluta quibusdam accusamus a veniam quaerat eveniet eligendi dolor consectetur.</p>
+						<a href="#">TAKE A TOUR </a>
+						
+					</div>
+
+				</div>
+
+			</div>
+
+		</head>
+		<section>
+			<div>
+				<div>
+					<div>
+						<hr>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section>
+			<div>
+				<div>
+					<div>
+						<h2>RETINA READY</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe rem nisi accusamus error velit animi non ipsa placeat. Recusandae, suscipit, soluta quibusdam accusamus a veniam quaerat eveniet eligendi dolor consectetur.</p>
+							<a href="#">MORE INFORMATION</a>
+					</div>
+					<div>
+						<h2>MOBILE READY</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe rem nisi accusamus error velit animi non ipsa placeat. Recusandae, suscipit, soluta quibusdam accusamus a veniam quaerat eveniet eligendi dolor consectetur.</p>
+							<a href="#">MORE INFORMATION</a>
+					</div>
+					<div>
+						<h2>EASY LAYOUT</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe rem nisi accusamus error velit animi non ipsa placeat. Recusandae, suscipit, soluta quibusdam accusamus a veniam quaerat eveniet eligendi dolor consectetur.</p>
+							<a href="#">MORE INFORMATION</a>
+					</div>
+				</div>
+			</div>
+		</section>
+		<footer>
+			<div>
+				<div>
+					<div>
+						<p>copyright &copy 	LOSO</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+		</body>
+</html>
