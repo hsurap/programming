@@ -1,9 +1,0 @@
-<DOCTYPE html>
-<html>
-	<head>
-		<title>adding image </title>
-	</head> 
-	<body>
-		<img src="download.png" alt="image" width="204" height="240">
-	</body>
-</html>
