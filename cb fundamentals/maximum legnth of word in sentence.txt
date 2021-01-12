@@ -1,0 +1,28 @@
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+int main() {
+	char a[100];
+	cin.getline(a,100);
+	cin.get();
+	int i=0;
+	int cl=0,ml=0;
+	while(1)
+	{
+	    if (a[i]==' '||a[i]=='\0')
+	    {
+	        ml=max(ml,cl);
+	        cl=0;
+	    }
+	    else{
+	        cl++;
+	    }
+	    if (a[i]=='\0')
+	    {
+	        break;
+	    }
+	    i++;
+	}
+	cout<<ml;
+	return 0;
+}
