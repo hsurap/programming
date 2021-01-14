@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+int main() {
+	/*int i=65;
+	char c=i;
+	cout<<c<<endl;
+	int *p=&i;
+	char *pc=(char*)p;
+	cout<<p<<endl<<pc<<endl<<&p<<endl<<&pc<<endl;
+	cout<<*p<<endl<<*(p+1)<<endl<<*(p+2)<<endl<<*(p+3)<<endl;
+	cout<<*pc<<endl<<*(pc+1)<<endl<<*(pc+2)<<endl<<*(pc+3)<<endl;
+	cout<<"hello";*/
+	/*char c[52]="z";
+	int i=c;
+	cout<<c<<endl;;
+	cout<<i<<endl;
+	char *pc=c;
+	int *p=(int *)pc;
+	cout<<pc;//<<endl<<p<<endl<<&p<<endl<<&pc<<endl;
+	return 0;*/
+}
