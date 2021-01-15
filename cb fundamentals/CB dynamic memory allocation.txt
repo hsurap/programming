@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+int main() {
+	/*int *p= new int;
+	*p=100;
+	cout<<*p<<endl;
+	float *n= new float;
+	*n=100.220;
+	cout<<*n<<endl;*/
+	//delet p;
+	//delete n;
+	int n;
+	cin>>n;
+	int *arr =new int[n];
+	for(int i=0;i<n;i++)
+	{
+	    cin>>arr[i];
+	}
+	int *maxx =new int;
+	*maxx=-1;
+	for(int i=0;i<n;i++)
+	{
+	    if(arr[i]>*maxx)
+	    {
+	        *maxx=arr[i];
+	    }
+	}
+	cout<<*maxx<<endl;
+	delete []arr;
+	delete maxx;
+}
