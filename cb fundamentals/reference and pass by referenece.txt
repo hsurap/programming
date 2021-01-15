@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+void func(int &i)
+{
+    i++;
+}
+/*int *func1(int i)
+{
+    int a=i;
+    return &a;
+}*/
+int main() {
+    /*int i=10;
+    int& j=i;
+    j++;
+    int k=100;
+    j=k;
+    cout<<i;*/
+    int i=10;
+    func(i);
+    cout<<i;
+    /*int *k= func(i);
+    cout<<k<<endl<<*k;*/
+	return 0;
+}
