@@ -1,0 +1,18 @@
+#include<bits/stdc++.h>
+using namespace std;
+string convert(string s, string s2, int n, int currPos){
+  if(currPos==n)
+    return "";
+  s2=s[currPos];
+  if(s[currPos] == s[currPos+1] && currPos!=n-1){
+    s2+="*";
+  }
+  return s2 + convert(s,s2,n,currPos+1);
+}
+int main(){
+  string s,s2="";
+  cin>>s;
+  int n = s.length();
+  cout<<convert(s,s2,n,0)<<endl;
+  return 0;
+}
