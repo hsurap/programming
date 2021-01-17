@@ -1,0 +1,20 @@
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+int convert(char a[],int i,int x)
+{
+    if(i<0)
+    {
+        return 0;
+    }
+    int smallanswer=(a[i]-'0')*pow(10,x);
+    return smallanswer+convert(a,i-1,x+1);
+    
+}
+int main() {
+	char a[100];
+	cin>>a;
+	int l=strlen(a)-1;
+	cout<<convert(a,l,0);
+	return 0;
+}
