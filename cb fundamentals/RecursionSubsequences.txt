@@ -1,0 +1,21 @@
+#include <iostream>
+#include<string>
+using namespace std;
+void func(string s,string ans)
+{
+    if(s.size()==0)
+    {
+        cout<<ans<<" ";
+        return ;
+    }
+    char ch=s[0];
+    string ros=s.substr(1);
+    func(ros,ans);
+    func(ros,ans+ch);
+}
+int main() {
+	string s,ans;
+	getline(cin,s);
+	func(s,ans);
+	return 0;
+}
