@@ -1,0 +1,54 @@
+#include<iostream>
+#include<algorithm>
+using namespace std;
+class fraction{
+    private:
+    int num;
+    int den;
+    public:
+    fraction(int num,int den)
+    {
+        this->num=num;
+        this->den=den;
+    }
+    void print()
+    {
+        cout<<this->num<<"/"<<this->den;
+        cout<<endl;
+        //cout<<num<<"/"<<den;
+    }
+    void simplify()
+    {
+        int gcd;
+        int minimum=min(this->num,this->den);
+        for(int i=1;i<minimum;i++)
+        {
+            if(this->num%i==0 || this->den%i==0)
+            {
+                gcd=i;
+            }
+        }
+        cout<<this->num<<"/"<<this->den;
+    }
+    void add(fraction f2,fraction f3)
+    {
+        int lcm= (this->den)*f2.den;
+        int m=lcm/(this->den);
+        int n=lcm/(f2.den);
+        int nu= (this->num)*m+(f2.num)*n;
+        f3.num=nu;
+        f3.den=lcm;
+        //cout<<nu<<"/"<<lcm;
+    }
+};
+int main()
+{
+    fraction f1(10,2);
+    f1.print();
+    int x,y;
+    cin>>x>>y;
+    fraction f2(x,y);
+    fraction f3(1,1);
+    f1.add(f2,f3);
+    f3.simplify();
+}
