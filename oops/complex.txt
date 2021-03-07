@@ -1,0 +1,49 @@
+#include<iostream>
+using namespace std;
+class complex{
+    private:
+    int real;
+    int img;
+    public:
+    
+    void complex(int real,int img)
+    {
+        this->real=real;
+        this->img=img;
+    }
+    
+    void add(complex c2)
+    {
+        this->real=this->real+c2.real;
+        this->img=this->img+c2.img;
+    }
+    void print()
+    {
+        cout<<real<<"+ i"<<img;
+    }
+    void multiply(complex c2)
+    {
+        this->real=this->real*c2.real - this->img*c2.img;
+        this->complex=this->real*c2.img + c2.real*this->img;
+    }
+};
+int main()
+{
+    int r1,r2,i1,i2;
+    cin>>r1>>r2>>i1>>i2;
+    complex c1(r1,i1);
+    complex c2(r2,i2);
+    
+    int choice;
+    cin>>choice;
+    
+    if(choice==1)
+    {
+        c1.add(c2);
+        c1.print();
+    }
+    else{
+        c1.multiply(c2);
+        c1.print();
+    }
+}
