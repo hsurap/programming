@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lets start with web development</title>
+</head>
+<body>
+    <!--
+    <h1>welcome to apni kaksha</h1>
+    <h2>welcome to apni kaksha</h2>
+    <h3>welcome to apni kaksha</h3>
+    <h4>welcome to apni kaksha</h4>
+    <h5>welcome to apni kaksha</h5>
+    <h6>welcome to apni kaksha</h5>
+        -->
+    <!---->
+    <!--
+        printing special charchter
+    <h1>
+        &lt;h1&gt;
+    </h1>
+    <br>
+    <p>Lorem, <b> dolor sit amet consectetur adipisicing elit. Saepe pariatur vitae</b> praesentium possimus, <i>adipisci a ab voluptates magnam quibusdam</i> facere 10 <sup>2</sup> delectus quidem labore repellat <small> tempora quod aliquam enim expedita</small> deserunt!</p>
+    <hr>
+    <h2>shopping list</h2>
+    <ol type="a">
+        <li>milk</li>
+        <ul>
+            <li>powder milk</li>
+            <li>liquid milk</li>
+            <li>solid milk</li>
+        </ul>
+        <li>sugar</li>
+        <li>maggie</li>
+        <li>jam</li>
+    </ol>
+    -->
+    <!--
+    <a href="https://www.google.com" target="blank">Google</a>
+    <a href="page.html">Page 2</a>
+    <a href="https://github.com/hsurap" target="_blank" rel="noopener noreferrer"><h2>github</h2></a>
+    <a href="notes/delete node.txt" target="blank">delete node</a>
+    <hr>
+    <img src="img/IMG_20200605_002627_306.jpg" alt="this is an image" width="350">
+    <br>
+    <hr>
+    <video src="vid/18_Delete node recursively.mp4" width="400" controls loop muted poster="img/IMG_20200605_002627_306.jpg"></video>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/2QR11oDukn4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe src="https://github.com/hsurap" frameborder="0"></iframe>
+    -->
+    <!--
+    <table>
+        <thead>
+         <tr>
+             <th>subject</th>
+             <th>theory</th>
+             <th>practical</th>
+             <th>total marks</th>
+             <th>grades</th>
+         </tr>
+        </thead> 
+        <tbody>
+            <tr>
+                <td>english</td>
+                <td>44</td>
+                <td>66</td>
+                <td>-</td>
+                <td>A</td>
+            </tr>
+            <tr>
+                <td>math</td>
+                <td>44</td>
+                <td>66</td>
+                <td>-</td>
+                <td>A</td>
+            </tr> 
+            <tr>
+                <td>evs</td>
+                <td>44</td>
+                <td>66</td>
+                <td>-</td>
+                <td>A</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <th colspan="5">result:pass</th>
+        </tfoot>
+    </table>
+    -->
+     
+</body>
+</html>
