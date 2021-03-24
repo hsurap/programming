@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apni Kaksha | Home</title>
+</head>
+<body>
+    <header>
+        <h1>Apni Kaksha </h1>
+    </header>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">College Reviews</a>
+        <a href="#">Courses</a>
+        <a href="#">Study Material</a>
+        <a href="#">Login/SignUp</a>
+    </nav>
+    <main>
+        <section>
+            <h2>Courses</h2>
+            <video src="vid/18_Delete node recursively.mp4" width="33%" poster="img/IMG_20200605_002627_306.jpg" controls></video>
+            <video src="vid/18_Delete node recursively.mp4" width="33%" poster="img/IMG_20200605_002627_306.jpg" controls></video>
+            <video src="vid/18_Delete node recursively.mp4" width="33%" poster="img/IMG_20200605_002627_306.jpg" controls></video>
+            <br>
+            <br>
+            <br> 
+            <video src="vid/18_Delete node recursively.mp4" width="33%" poster="img/IMG_20200605_002627_306.jpg" controls></video>
+            <video src="vid/18_Delete node recursively.mp4" width="33%" poster="img/IMG_20200605_002627_306.jpg" controls></video>
+            <video src="vid/18_Delete node recursively.mp4" width="33%" poster="img/IMG_20200605_002627_306.jpg" controls></video> 
+        </section>
+        <section>
+            <h2>College Reviews</h2>
+            <iframe width="33%" height="75%" src="https://www.youtube.com/embed/j0biLzzJ2XQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="33%" height="75%" src="https://www.youtube.com/embed/j0biLzzJ2XQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="33%" height="75%" src="https://www.youtube.com/embed/j0biLzzJ2XQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </section>
+        <section>
+            <h2>Study Material</h2>
+            <a href="notes/better insert.txt " target="blank"><img src="img/IMG_20200605_002627_306.jpg" alt="notes1" width="24%" height="60%"></a>
+            <a href="notes/better insert.txt "target="blank"><img src="img/IMG_20200605_002627_306.jpg" alt="notes1" width="24%" height="60%"></a>
+            <a href="notes/better insert.txt " target="blank"><img src="img/IMG_20200605_002627_306.jpg" alt="notes1" width="24%" height="60%"></a>
+            <a href="notes/better insert.txt " target="blank"><img src="img/IMG_20200605_002627_306.jpg" alt="notes1" width="24%" height="60%"></a>
+        </section>
+        <section>
+            <h2>Our Founder </h2>
+            <img src="img/IMG_20200605_002627_306.jpg" alt="This is Parush" width="33%">
+            <h2>Parush</h2>
+            <a href="https://www.youtube.com/channel/UCbYE_tF94muR2jw595TVM3g">Youtube</a>&nbsp;
+            <a href="https://github.com/hsurap">Github</a>
+            <h4>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae atque distinctio, eum quia impedit facere alias sunt possimus fugiat mollitia similique sed molestias id dolore delectus quisquam, incidunt amet officiis esse nisi. Consequatur sapiente, magni dicta eius fugiat ratione. Laborum excepturi eaque eum deleniti inventore obcaecati aspernatur nulla sit voluptatem.</h4>
+            <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia iste autem dolorem perferendis unde neque illum possimus magni nostrum alias. Voluptas eveniet perspiciatis animi laudantium esse iusto ad dolorem et, vel nam quis quibusdam tenetur quia. Corporis corrupti asperiores alias est eligendi recusandae, placeat mollitia laboriosam? Error inventore delectus consequatur blanditiis laboriosam nostrum perspiciatis aut quidem incidunt commodi quasi, natus doloribus praesentium, assumenda eum in facere dicta vitae tenetur necessitatibus sequi debitis sint ducimus! Deleniti amet cum reprehenderit nulla? Quidem similique iure inventore saepe facilis ab, consequuntur obcaecati soluta tempora beatae culpa, necessitatibus laborum error dicta fugit a cumque ex sed sit vel amet? Reprehenderit exercitationem quos voluptas fuga recusandae corporis vel beatae dolorum. Blanditiis quis aliquid a esse ut aliquam asperiores fuga expedita recusandae ullam reprehenderit, soluta quia quisquam dolorum dicta porro eaque? Distinctio nemo corporis voluptates id explicabo dignissimos, iure provident iusto. Repellendus consectetur libero quidem debitis vitae aliquam, maiores reiciendis eum vero provident, ab consequuntur quae doloribus, ex ratione. Impedit error voluptas ipsum dolor exercitationem adipisci non alias! Exercitationem nisi incidunt autem obcaecati? Modi, quos, quam cumque, ipsa sequi nemo quaerat est quasi consequatur excepturi nihil quia voluptatum neque dignissimos libero perspiciatis natus repellat ad in. Eos.</h5>
+        </section>
+    </main>
+    <footer>
+        <a href="#">FAQ</a>
+        <a href="#">contact us</a>
+        <a href="#">terms of use</a>
+        <a href="#">privacy policy</a>
+        <a href="#">refund policy</a>
+        <a href="#">&COPY; 2020|Apni Kaksha</a>
+    </footer>
+</body>
+</html>
