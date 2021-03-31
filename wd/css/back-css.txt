@@ -1,0 +1,11 @@
+.background{
+    background-image: url("img/nature1.webp");
+    height: 1000px;
+    width: 1000px;
+    background-repeat: no-repeat;
+    background-size: 400px;
+    background-attachment:scroll;
+    background-position-x: center; 
+}
+p{
+    text-align: center;
