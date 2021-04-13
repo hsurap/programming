@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+int * recover(int s,int size,int *a,int *b)
+{
+    int i=0;
+    int e=size-1;
+    while(s<=e)
+    {
+        int mid=(s+e)/2;
+        b[i]=a[mid];
+        i++;
+        while(mid<e)
+        {
+            a[mid]=a[mid+1];
+            mid++;
+        }
+        e--;
+    }
+    return b;
+}
+int main() {
+	int a[100],b[100]={0};
+	int n;
+	cin>>n;
+	for(int i=0;i<n;i++)
+	{
+	    cin>>a[i];
+	}
+	int *p=recover(0,n,a,b);
+	for(int i=0;i<n;i++)
+	{
+	    cout<<p[i]<<" ";
+	}
+	return 0;
+}
