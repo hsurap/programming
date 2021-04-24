@@ -1,0 +1,73 @@
+#include <iostream>
+#include <climits>
+using namespace std;
+class stack{
+    int*data;
+    int nextindex;
+    int capacity;
+public:
+    stack(int totalsize)
+    {
+        data=new int[totalsize];
+        nextindex=0;
+        capacity=totalsize;
+    }
+    int size()
+    {
+        return nextindex;
+    }
+    int isempty()
+    {
+        return nextindex==0;
+    }
+    void push(int element){
+        if(nextindex== capacity)
+        {
+            cout<<"stack is full"<<endl;
+            return;
+        }
+        else{
+            data[nextindex]=element;
+            nextindex++;
+        }
+    }
+    int pop()
+    {
+        if(isempty())
+        {
+            cout<<"stack is empty"<<endl;
+            return INT_MIN;
+        }
+        else{
+            nextindex--;
+            return data[nextindex];
+        }
+    }
+    int top()
+    {
+        if(isempty())
+        {
+            cout<<"stack is empty"<<endl;
+            return INT_MIN;
+        }
+        else{
+            return data[nextindex-1];
+        }
+    }
+};
+int main() {
+
+	stack s(4);
+	s.push(2);
+	s.push(3);
+	s.push(4);
+	s.push(5);
+	s.push(6);
+	cout<<s.size()<<endl;
+	cout<<s.isempty()<<endl;
+	s.pop();
+	s.pop();
+	s.pop();
+	s.pop();
+	cout<<s.isempty()<<endl;
+}
