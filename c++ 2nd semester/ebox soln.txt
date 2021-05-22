@@ -1,0 +1,132 @@
+#ifndef MYHEADER_H
+#define MYHEADER_H
+#include<iostream>
+#include<string.h>
+using namespace std;
+
+class Donation
+{
+    public:
+	string donorName;
+	string bloodGroup;
+	
+	public:
+    Donation(){}
+	Donation(string a,string b)
+	{
+		donorName=a;
+		bloodGroup=b;
+	}
+    
+	void displayDonationDetails()
+	{
+		cout<<"Donor Name: "<<donorName;
+		cout<<"\nBlood Group: "<<bloodGroup;
+	}	
+};
+#endif
+
+
+-------------------------------------------------------------------
+
+
+
+#include<iostream>
+#include"Donation.cpp"
+#include<string.h>
+using namespace std;
+
+class VolunteerDonation :public Donation
+{
+    public:
+	string Occasion;
+	
+	public:
+    VolunteerDonation(){}
+    VolunteerDonation(string a,string b,string c):Donation(a,b)
+	{
+		Occasion=c;
+	}
+    
+	void displayVolunteerDonationDetails()
+	{
+		displayDonationDetails();
+		cout<<"\nOccasion : "<<Occasion;
+	}
+};
+
+--------------------------------------------------------------------------------
+
+
+
+#include<iostream>
+#include"Donation.cpp"
+#include<string.h>
+using namespace std;
+
+class DirectedDonation :public Donation
+{
+    public:
+    string recipientName;
+	string relationship;
+	
+	public:
+    DirectedDonation(){}
+    DirectedDonation(string name,string bloodGroup,string recipientName,string relationship):Donation(name, bloodGroup)
+	{
+		this->recipientName=recipientName;
+		this->relationship=relationship;
+	}
+    
+	void displayDirectedDonationDetails()
+	{
+		displayDonationDetails();
+		cout<<"\nRecipient Name: "<<recipientName;
+		cout<<"\nRelationship: "<<relationship;
+	}
+};
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+#include <iostream>
+#include<string.h>
+#include "VolunteerDonation.cpp"
+#include "DirectedDonation.cpp"
+using namespace std;
+int main()
+{
+    string name,bg;
+    int n;
+    cout<<"Enter Donor Name\n";
+    getline(cin,name);
+    cout<<"Enter Donor Blood Group\n";
+    getline(cin,bg);
+    cout<<"Enter your Choice\n1. Volunteer\n2. Directed\n";
+    cin>>n;
+    switch(n)
+    {
+        case 1: {
+                    string oc;
+                    cout<<"Enter Occasion\n";
+                    cin.ignore();
+                    getline(cin,oc);
+                    VolunteerDonation ob(name,bg,oc);
+                    ob.displayVolunteerDonationDetails();
+                }break;
+        case 2: 
+                {
+                    string rn,rel;
+                    cout<<"Enter Donor Recipient Name\n";
+                    cin>>rn;
+                    cout<<"Enter Donor Relationship\n";
+                    cin>>rel;
+                    DirectedDonation ob(name,bg,rn,rel);
+                    ob.displayDirectedDonationDetails();
+                }break;
+    }
+	return 0;
+}
