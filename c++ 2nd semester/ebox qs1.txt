@@ -1,0 +1,121 @@
+#include <iostream>
+#include<string>
+#include<stdio.h>
+#include "Purchase.cpp"
+using namespace std;
+
+float Purchase::totalAmt=0;
+int Purchase::totalCountOfItems=0;
+int main()
+{
+    Purchase donut[100];
+    int t;
+    cout << "Enter the Number of customers :" << endl;
+    cin  >> t;
+    string name;
+    int count;
+    float amount;
+    
+    for(int i=0; i<t; i++)
+    {
+        cout << "Enter the Name of the customer :" << endl;
+        cout << "Enter the No of Items purchased :" << endl;
+        cout << "Enter the purchase amount :" << endl;
+        cin  >> name >> count >> amount;
+        donut[i].setUserName(name);
+        donut[i].setCountOfItems(count);
+        donut[i].setAmount(amount);
+        
+    
+    }
+    cout << "Purchase Details :" << endl;
+    donut[0].display(donut,t);
+    
+    
+    return 0;
+}
+-----------------------------
+#include <iostream>
+#include<stdio.h>
+#include<string>
+using namespace std;
+class Purchase
+{
+private:
+string userName;
+int countOfItems;  
+float amount;
+float static totalAmt;
+int static totalCountOfItems;
+
+public:
+
+string getUserName()
+{
+return userName;
+}
+void setUserName(string a)
+{
+this->userName=a;
+}
+
+
+int getCountOfItems()
+{
+return countOfItems;
+}
+void setCountOfItems(int b)
+{
+this->countOfItems=b;
+}
+
+
+
+float getAmount()
+{
+return amount;
+}
+void setAmount(float c)
+{
+this->amount=c;
+}
+
+float getTotalAmt()
+{
+return totalAmt;
+}
+void setTotalAmt(float d)
+{
+this->totalAmt=d;
+}
+
+
+
+
+int getTotalCountOfItems()
+{
+return totalCountOfItems;
+}
+void settotalCountOfItems(int e)
+{
+this->totalCountOfItems=e;
+}
+
+
+void display(Purchase obj[],int n)
+{
+
+    for(int i=0; i<n; i++)
+    {
+        cout << "Customer " << i+1 << " :"<<obj[i].getUserName()<<endl;
+        cout << "No of Items purchased :"<<obj[i].getCountOfItems()<<endl;
+        cout << "Purchase amount :"<<obj[i].getAmount()<<endl;
+        obj[i].setTotalAmt(obj[i].getTotalAmt()+obj[i].getAmount());
+        obj[i].settotalCountOfItems(obj[i].getTotalCountOfItems()+obj[i].getCountOfItems());
+    }
+    cout << "Total Amount Received :"<<getTotalAmt()<< endl;
+    cout << "Total Number of Items sold :"<<getTotalCountOfItems()  << endl;
+
+
+}
+};
