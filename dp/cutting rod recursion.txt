@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+int maxprofit(int arr[],int totallen)
+{
+    if(totallen==0)
+        return 0;
+    int best=0;
+    for(int i=1;i<=totallen;i++)
+    {
+        int cost=arr[i]+maxprofit(arr,totallen-i);
+        best=max(best,cost);
+    }
+    return best;
+}
+int main() {
+	int price[100];
+	int totallen;
+	cin>>totallen;
+	for(int len=1;len<=totallen;len++)
+	{
+	    cin>>price[len];
+	}
+	int ans=maxprofit(price,totallen);
+	cout<<ans;
+	return 0;
+}
