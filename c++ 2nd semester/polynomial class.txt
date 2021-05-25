@@ -1,0 +1,104 @@
+#include <iostream>
+using namespace std;
+class polynomial{
+    int *degcoff;
+    int capacity;
+    public:
+    polynomial()
+    {
+        degcoff=new int[5];
+        capacity=5;
+        for(int i=0;i<capacity;i++)
+        {
+            degcoff[i]=0;
+        }
+    }
+    polynomial (polynomial const & p)
+    {
+        degcoff=new int[p.capacity];
+        for(int i=0;i<p.capacity;i++)
+        {
+            this->degcoff[i]=p.degcoff[i];
+        }
+        capacity=p.capacity;
+    }
+    void operator=(polynomial const &p)
+    {
+        this->degcoff=new int[p.capacity];
+        for(int i=0;i<capacity;i++)
+        {
+            this->degcoff[i]=p.degcoff[i];
+        }
+        this->capacity=p.capacity;
+        
+    }
+    void print()
+    {
+        for(int i=0;i<capacity;i++)
+        {
+            cout<<degcoff[i]<<"x"<<i<<"+";
+        }
+        cout<<endl;
+    }
+    void setcoff(int degree,int coff)
+    {
+        if(degree<capacity)
+        {
+            degcoff[degree]=coff;
+        }
+        else{
+            while(capacity<=degree)
+            {
+                int *newdegcoff=new int[2*capacity];
+                for(int i=0;i<capacity;i++)
+                {
+                    newdegcoff[i]=degcoff[i];
+                }
+                delete[]degcoff;
+                degcoff=newdegcoff;
+                capacity*=2;
+            }
+            degcoff[degree]=coff;
+        }
+    }
+    polynomial operator+(polynomial const &p)
+    {
+        int size=max(this->capacity,p.capacity);
+        int *arr=new int[size];
+        for(int i=0;i<size;i++)
+        {
+            arr[i]=this->degcoff[i]+p.degcoff[i];
+        }
+        polynomial pnew;
+        for(int i=0;i<size;i++)
+        {
+            pnew.setcoff(i,arr[i]);
+        }
+        return pnew;
+    }
+};
+int main() {
+	polynomial p1;
+	//p1.print();
+	p1.setcoff(0,1);
+	p1.setcoff(1,2);
+	p1.setcoff(2,3);
+	p1.setcoff(3,4);
+	p1.setcoff(4,5);
+	//p1.print();
+	p1.setcoff(5,6);
+	p1.setcoff(6,7);
+	p1.setcoff(7,8);
+	p1.print();
+	//polynomial p2(p1);
+	//p2.print();
+	polynomial p2;
+	p2.setcoff(0,1);
+	p2.setcoff(1,2);
+	p2.setcoff(2,3);
+	p2.setcoff(3,4);
+	p2.print();
+	polynomial p3=p1+p2;
+	p3.print();
+	return 0;
+}
