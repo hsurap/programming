@@ -1,0 +1,6 @@
+1)Structures in C cannot have member functions inside structure but Structures in C++ can have member functions along with data members.
+2)Direct Initialization: We cannot directly initialize structure data members in C but we can do it in C++. 
+3)Using struct keyword: In C, we need to use struct to declare a struct variable. In C++, struct is not necessary. For example, let there be a structure for Record. In C, we must use “struct Record” for Record variables. In C++, we need not use struct and using ‘Record‘ only would work.
+4)Static Members: C structures cannot have static members but is allowed in C++. 
+5)Constructor creation in structure: Structures in C cannot have constructor inside structure but Structures in C++ can have Constructor creation.
+6)Constructor creation in structure: Structures in C cannot have constructor inside structure but Structures in C++ can have Constructor creation.
