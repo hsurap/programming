@@ -1,44 +1,42 @@
 #include<iostream>
 using namespace std;
-class Vehicle {
-	private :
-		int maxSpeed;
-
-	protected :
-		int numTyres;
-
-	public :
-		string color;
-
-};
-
-class Car : public Vehicle {
-	public :
-		int numGears;
-
-
-		void print() {
-			cout << "NumTyres : " << numTyres << endl;
-			cout << "Color : " << color << endl;
-			cout << "Num gears : " << numGears << endl;
-	//		cout << "Max Speed : " << maxSpeed << endl;
+class class1{
+	public:
+	class1(){
+		cout<<"base"<<endl;
+	}
+	protected:
+		void d(){
+			cout<<"protected"<<endl;
 		}
 };
-int main() {
-	Vehicle v;
-
-	v.color = "Blue";
-	// v.maxSpeed = 100;
-	// v.numTyres = 4;
-
-
-	Car c;
-	c.color = "Black";
-//	c.numTyres = 4;
-	c.numGears = 5;
-
-
+class class2:protected class1{
+	public:
+	class2(){
+		cout<<"derived"<<endl;
+		d();
+	}
+};
+class class3{
+	public:
+	class3(){
+		cout<<"base"<<endl;
+	}
+	protected:
+		void d(){
+			cout<<"protected"<<endl;
+		}
+};
+class class4:private class3{
+	public:
+	b(){
+		cout<<"derived"<<endl;
+		d();
+	}
+};
+int main(){
+	class1 ob;
+	class2 ob1;
+	class3 ob2;
+	class4 ob3;
 }
-
-
-
