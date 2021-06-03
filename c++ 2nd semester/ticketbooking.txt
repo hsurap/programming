@@ -1,0 +1,120 @@
+#include<iostream>
+#include<string>
+#include "TicketBooking.cpp"
+using namespace std;
+int main()
+{
+    int choice;
+        cout<<"Payment methods"<<endl;
+        cout<<"1.Cash payment"<<endl;
+        cout<<"2.Wallet payment"<<endl;
+        cout<<"3.Credit card payment"<<endl;
+        cout<<"Enter your option:"<<endl;
+        cin>>choice;
+        TicketBooking ticket;
+        switch(choice){
+            case 1:{
+                double amount;
+                cout<<"Enter the amount :"<<endl;
+                cin>>amount;
+                ticket.setAmount(amount);
+                ticket.makePayment(ticket.getAmount());
+                break;
+            }
+            case 2:{
+                double amount;
+                string walletnumber;
+                 cout<<"Enter the amount :"<<endl;
+                cin>>amount;
+                ticket.setAmount(amount);
+                cout<<"Enter the wallet number:"<<endl;
+                cin>>walletnumber;
+                ticket.setWalletNumber(walletnumber);
+                ticket.makePayment(ticket.getWalletNumber(),ticket.getAmount());
+                break;
+            }
+            case 3:{
+                double amount;
+                string creditcard;
+                string ccv;
+                string name;
+                 cout<<"Enter the amount :"<<endl;
+                cin>>amount;
+                ticket.setAmount(amount);
+                cout<<"Enter the credit card number:"<<endl;
+                cin>>creditcard;
+                ticket.setCreditCard(creditcard);
+                cout<<"Enter the ccv number:"<<endl;
+                cin>>ccv;
+                ticket.setCcv(ccv);
+                cout<<"Enter name:"<<endl;
+                cin>>name;
+                ticket.setName(name);
+                ticket.makePayment(ticket.getCreditCard(), ticket.getCcv(), ticket.getName(),ticket.getAmount());
+            }
+        }
+       return 0;
+}
+
+
+-----------------------
+#include<iostream>
+#include<string>
+#include<iomanip>
+using namespace std;
+class TicketBooking
+{
+string name;
+string walletNumber;
+string creditCard;
+string ccv;
+double amount;
+public:
+void setName(string name){
+    this->name=name;
+}
+string getName(){
+    return name;
+}
+void setWalletNumber(string walletNumber){
+    this->walletNumber=walletNumber;
+}
+string getWalletNumber(){
+    return walletNumber;
+}
+    void setCreditCard(string creditCard){
+    this->creditCard=creditCard;
+}
+string getCreditCard(){
+    return creditCard;
+}
+    void setCcv(string ccv){
+    this->ccv=ccv;
+}
+string getCcv(){
+    return ccv;
+}
+    void setAmount(double amount){
+    this->amount=amount;
+}
+double getAmount(){
+    return this->amount;
+}
+    void makePayment(double amounts){
+        this->amount=amounts;
+        cout<<"Amount Rs."<<setprecision(2)<<fixed<<amount<<" paid in cash";
+    }
+     void makePayment(string walletnumbers,double amounts){
+         this->amount=amounts;
+         this->walletNumber=walletnumbers;
+         cout<<"Amount Rs."<<setprecision(2)<<fixed<<amount<<" paid using wallet number "<<walletNumber;
+     }
+     void makePayment(string creditcards,string ccvs,string names,double amounts){
+         this->amount=amounts;
+         this->creditCard=creditcards;
+         this->ccv=ccvs;
+         this->name=names;
+         cout<<"Amount Rs."<<setprecision(2)<<fixed<<amount<<" paid using credit card "<<creditCard;
+     }
+    
+};
