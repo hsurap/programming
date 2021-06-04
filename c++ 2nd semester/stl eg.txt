@@ -1,0 +1,7 @@
+Using char[] modification is possible
+int main() { 
+  char str[] = "Hello"; 
+    str[1] = 'o'; 
+    cout << str << endl; 
+}
+// Output will be Hollo
