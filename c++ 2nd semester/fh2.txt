@@ -1,0 +1,23 @@
+#include <iostream>
+#include<fstream>
+#include<string>
+using namespace std;
+
+int main()
+{  
+	string fname;
+    string line;
+    cout<<"Give filename:"<<endl;
+    cin>>fname;
+    ifstream in(fname);
+    if(in.fail())
+    {
+        cout<<endl<<"Error! Incorrect file.";
+    }
+    else{
+        while(getline(in, line)){
+            cout<<line<<endl;
+        }
+    }
+    in.close();
+}
