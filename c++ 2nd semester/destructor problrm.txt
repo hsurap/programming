@@ -1,0 +1,58 @@
+#include <cstring>
+#include<iostream>
+#include<string>
+#include<stdio.h>
+#include<iomanip>
+using namespace std;
+
+class Donor
+{
+     public:
+        string name;
+        int age,no_of_units_donated;
+        double height,weight;
+    public:
+    void display()
+    {
+	    cout << "Donor details:" << endl;
+        cout << name << endl;
+        cout << age << endl;
+        cout << height << endl;
+        cout << setprecision(1)<<fixed << weight << endl;
+        cout << no_of_units_donated << endl;
+	}
+    Donor()
+    {
+        cout << "Welcome to the Blood Bank";
+    }
+    ~Donor()
+    {
+        cout << "Thank you for donating the Blood";
+    }
+};
+
+--------------------------
+
+
+#include <cstring>
+#include<iostream>
+#include<string>
+#include "Donor.cpp"
+using namespace std;
+
+
+int main()
+{
+    Donor donut;
+    cout << "Enter the donor details" << endl;
+    cout << "Enter the Name :" << endl;
+    cout << "Enter the Age :"<<endl;
+    cout << "Enter the height :"<<endl;
+    cout << "Enter the weight :"<<endl;
+    cout << "Enter the No of units donated :"<<endl;
+    
+    
+    cin >> donut.name >> donut.age >> donut.height >> donut.weight >> donut.no_of_units_donated;
+    donut.display();
+
+}
