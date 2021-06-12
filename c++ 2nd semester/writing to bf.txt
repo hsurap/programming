@@ -1,0 +1,27 @@
+1.# iostream
+2.
+2.#include fstream
+3.
+using namespace std;
+4.
+int main()
+5.
+5.{ int a[] = {10,23,3,7,9,11,25};
+6.
+fstream fs
+7.
+fs.open ("myfile.txt", ios ::binary | ios ::
+8.
+fs.write ((char*) &a, sizeof (
+9.
+fs.close
+10.
+for( int i = 0; i < 7; i ++) i ] =
+11.
+fs.open ("myfile.txt", ios ::in | ios ::
+12.
+fs.read ((char*) &a, sizeof (
+13.
+for( int i = 0; i < 7; i ++) cout << i ] << "
+14.
+fs.close
