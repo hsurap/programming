@@ -1,0 +1,34 @@
+1.#include iostream >
+2.
+2.#include fstream
+3.
+using namespace std;
+4.
+int main()
+5.
+fstream file("demofile.txt", ios ::
+6.
+char ch
+7.
+file.seekg (5L, ios ::
+8.
+file.get ch
+9.
+cout << "Byte 5 from beginning: " << ch << endl
+10.
+file.seekg 10L, ios ::
+11.
+file.get ch
+12.
+cout << "Byte 10 from end: " << ch << endl
+13.
+file.seekg (3L, ios ::
+14.
+file.get ch
+15.
+cout << "Byte 3 from current: " << ch << endl
+16.
+file.close
+17.
+return 0;
+34
