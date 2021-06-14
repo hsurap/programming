@@ -1,0 +1,76 @@
+#include <stdio.h>
+
+int main()
+{
+    FILE * fptr;
+    char s,c,s2,c2;
+    int cd,ld;
+    char a[1000000];
+    scanf("%c%c %d\n" , &s,&c,&cd);
+    scanf("%c%c %d\n" , &s2,&c2,&ld);
+    scanf("%[^\n]", &a);
+    int c_count = 0;
+    int j = 1;
+    int bit = 0;
+    long long int i=0;
+    while(a[i]!='\0')
+    {
+        if(bit == 0)
+        {
+            char name[27];
+            sprintf(name, "200101007-AL1-c%d-output-%d.txt", cd,j);
+            printf("%s/n" , name);
+            bit = 1;
+            fptr = fopen(name, "w");
+        }
+        if((a[i] >= 'a' && a[i]<= 'z') || (a[i] >= 'A' && a[i]<= 'Z') || a[i] == ' ' || a[i] == '\n')
+        {
+
+              c_count++;
+
+          fputc(a[i], fptr);
+        }
+
+        if(c_count == cd)
+            {
+            j++;
+            c_count = 0;
+            bit = 0;
+            fclose(fptr);
+
+        }
+        i++;
+    }
+    int l_count = 0;
+    int ll = 0;
+    int bit2 = 0;
+    for(int i = 0 ; a[i] != '\0' ;i++)
+    {
+        if(bit2 == 0)
+        {
+            char name2[27];
+            sprintf(name2, "200101007-AL1-l%d-output-%d.txt", ld,ll);
+            printf("%s/n" , name2);
+            fptr = fopen(name2, "w");
+            bit2 =1;
+        }
+        if((a[i] >= 'a' && a[i]<= 'z') || (a[i] >= 'A' && a[i]<= 'Z') || a[i] == ' ' || a[i] == '\n')
+        {
+            if(a[i] == '\n')
+            {
+                l_count++;
+            }
+            fputc(a[i], fptr);
+        }
+        if(l_count == ld)
+        {
+            ll++;
+            l_count = 0;
+            fclose(fptr);
+            bit2 = 0;
+        }
+
+    }
+
+    return 0;
+}
