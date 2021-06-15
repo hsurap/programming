@@ -1,0 +1,9 @@
+Time Time::operator+(Time t1) { 
+Time t; 
+int a,b; 
+a = s+t1.s; 
+t.s = a%60;     b =  (a/60)+m+t1.m; 
+t.m = b%60;  t.h = (b/60)+h+t1.h; 
+t.h = t.h%12; 
+return t; 
+}
