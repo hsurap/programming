@@ -1,0 +1,42 @@
+1.#include iostream >
+2.
+2.#include <
+3.
+using namespace std;
+4.
+int main()
+5.
+fstream dataFile;
+6.
+char name[81];
+7.
+dataFile.open("demofile.txt", ios::in);
+8.
+if ( dataFile)
+9.
+9.{ cout << "File open error!" << return 0;
+10.
+cout << "File opened successfully. n";
+11.
+cout << "Reading information from the file. n";
+12.
+dataFile >> name; // Read first name from the file
+13.
+while (!dataFile.eof())
+14.
+14.{ cout << name <<
+15.
+dataFile >> name;
+16.
+dataFile.close();
+17.
+cout << " nDone. n";
+18.
+return 0; }
+File opened successfully.
+Reading information from the file.
+Jones
+Smith
+Willis
+Davis
+Done.
