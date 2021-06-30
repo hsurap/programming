@@ -1,0 +1,8 @@
+String concat (connect)
+int main(){
+string name1,name2;
+cout<<"string 1: "; cin>>name1;
+cout<<"string 2: "; cin>>name2;
+cout<<"String concat = "<<name1+", "+ name2;
+}
+// + means connect strings together
