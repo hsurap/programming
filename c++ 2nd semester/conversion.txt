@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+#include<string>
+string func(int no)
+{
+    string s="";
+    while(no>0)
+    {
+        int rem=no%8;
+        char remch=rem+'0';
+        s=remch+s;
+        no=no/8;
+    }
+    //cout<<s<<endl;
+    return s;
+}
+int main()
+{
+	int no;
+	cin>>no;
+	string st=func(no);
+	cout<<st;
+}
