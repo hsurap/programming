@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+#include<bits/stdc++.h>
+#include<string>
+int main() {
+	string st;
+	getline(cin,st);
+	cout<<st<<endl<<st.length()<<endl;
+	int s=st.length()-1;
+	int e=st.length()-1;
+	while(s>=0)
+	{
+	    if(st[s]!=' ' && s>=0)
+	    {
+	        s--;
+	    }
+	    else{
+	        int a=s+1;
+	        s--;
+	        while(a<=e)
+	        {
+	            cout<<st[a++];
+	        }
+	        cout<<" ";
+	        e=s;
+	    }
+	    
+	}
+	return 0;
+}
