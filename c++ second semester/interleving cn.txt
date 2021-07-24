@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+void func(string s,string t,string ans)
+{
+    if(s.size()==0 && t.size()==0)
+    {
+        cout<<ans<<endl;
+        return ; 
+    }
+    if(s.size()!=0)
+    {
+        // cout<<s<<" "<<t<<endl;
+        func(s.substr(1),t,ans+s[0]);
+    }
+    if(t.size()!=0)
+    {
+        // cout<<s<<" "<<t<<endl;
+        func(s,t.substr(1),ans+t[0]);
+    }
+}
+int main() {
+	string s,t;
+	string ans="";
+	cin>>s>>t;
+	func(s,t,ans);
+	return 0;
+}
