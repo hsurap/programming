@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+int flag(int n)
+{
+    if(n==1 || n==2)
+        return 2;
+    return flag(n-1)+flag(n-2);
+}
+int main() {
+    int n;
+    cin>>n;
+    cout<<flag(n);
+	return 0;
+}
