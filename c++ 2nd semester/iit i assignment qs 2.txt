@@ -1,0 +1,70 @@
+#include <iostream>
+using namespace std;
+class Fraction 
+{
+	private :
+		int numerator;
+		int denominator;
+
+	public :
+		Fraction(int numerator, int denominator) {
+			this -> numerator = numerator;
+			this -> denominator = denominator;
+		}
+		void print() {
+			cout << this -> numerator << " / " << denominator << endl;
+		}
+		void simplify() {
+			int gcd = 1;
+			int j = min(this -> numerator, this -> denominator);
+			for(int i = 1; i <= j; i++) {
+				if(this -> numerator % i == 0 && this -> denominator % i == 0) {
+					gcd = i;
+				}
+			}
+			this -> numerator = this -> numerator / gcd;
+			this -> denominator = this -> denominator / gcd;
+		}
+		Fraction add(Fraction const &f2) {
+			int lcm = denominator * f2.denominator;
+			int x = lcm / denominator;
+			int y = lcm / f2.denominator;
+			int num = x * numerator + (y * f2.numerator);
+			int n=num;
+			int d=lcm;
+			Fraction fnew(n,d);
+			fnew.simplify();
+			return fnew;
+		}
+};
+
+int main()
+{
+	bool repeat =true;
+	while(repeat==true)
+	{
+	    int n1,d1;
+	    cout<<"write numerator and denominator for first Fraction"<<endl;
+	    cin>>n1>>d1;
+	    Fraction f1(n1,d1);
+	    f1.print();
+	    int n2,d2;
+	    cout<<"write numerator and denominator for second Fraction"<<endl;
+	    cin>>n2>>d2;
+	    Fraction f2(n2,d2);
+	    f2.print();
+	    Fraction f3=f1.add(f2);
+	    cout<<"Fraction sum ";
+	    f3.print();
+	    cout<<"Do you want to find sum again type Y for yes and N for no"<<endl;
+	    char ans;
+	    cin>>ans;
+	    if(ans=='N')
+	        repeat=false;
+	    else
+	        repeat=true;
+	}
+
+
+	return 0;
+}
