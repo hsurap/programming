@@ -1,0 +1,82 @@
+#include <iostream>
+using namespace std;
+template <typename T>
+class node
+{
+    public:
+    T data;
+    node<T>*next;
+    node(T data)
+    {
+        this->data=data;
+        next=NULL;
+    }
+};
+template <typename T>
+class stack{
+    private:
+    node<T>*head;
+    int current_size;
+    public:
+    stack()
+    {
+        head==NULL;
+        current_size=0;
+    }
+    void push(T val)
+    {
+        node<T>*nenode=new node<T>(val);
+        if(head==NULL)
+        {
+            head=nenode;
+        }
+        else{
+            nenode->next=head;
+            head=nenode;
+        }
+        current_size++;
+    }
+    T pop()
+    {
+        if(current_size==0)
+        {
+            return 0;
+        }
+        node<T>*temp=head->next;
+        T ans=head->data;
+        delete head;
+        head=temp;
+        current_size--;
+        return ans;
+    }
+    T top()
+    {
+        if(current_size==0)
+        {
+            return 0;
+        }
+        return head->data;
+    }
+    int size()
+    {
+        return current_size;
+    }
+    bool empty()
+    {
+        return current_size==0;
+    }
+    
+};
+
+
+int main() {
+    stack<int> s;
+    s.push(10);
+    s.push(20);
+    cout<<s.size()<<endl;
+    cout<<s.top()<<endl;
+    s.push(30);
+    cout<<s.pop()<<endl;
+    cout<<s.size()<<endl;
+    cout<<s.empty()<<endl;
+}
