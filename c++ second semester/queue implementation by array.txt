@@ -1,0 +1,85 @@
+#include <iostream>
+using namespace std;
+class queue{
+    private:
+    int *data;
+    int next;
+    int first;
+    int qsize=0;
+    int capacity;
+    public:
+    queue(int total_size)
+    {
+        data=new int[total_size];
+        next=0;
+        first=-1;
+        qsize=0;
+        capacity=total_size;
+    }
+    int size()
+    {
+        return qsize;
+    }
+    bool empty()
+    {
+        return qsize==0;
+    }
+    void enqueue(int val)
+    {
+        if(qsize==capacity)
+            cout<<"no space left";
+        if(next==capacity)
+            next=0;
+        if(first==-1)
+            first=0;
+        data[next]=val;
+        next++;
+        qsize++;
+    }
+    int dequeue()
+    {
+        if(qsize==0)
+        {
+            cout<<"no eleme"<<endl;
+            return -999999;
+        }
+        if(first==capacity)
+            first=0;
+        qsize--;
+        int ans=data[first];
+        first++;
+        return ans;
+    }
+    int front()
+    {
+        if(qsize==0)
+        {
+            cout<<"no eleme"<<endl;
+            return -999999;
+        }
+        return data[first];
+    }
+};
+int main() {
+	queue q(5);
+	q.enqueue(10);
+	cout<<q.front()<<endl;
+	q.enqueue(20);
+	q.enqueue(30);
+	cout<<q.front()<<endl;
+	cout<<q.dequeue()<<endl;
+	cout<<q.dequeue()<<endl;
+	cout<<q.front()<<endl;
+	q.enqueue(40);
+	q.enqueue(50);
+	cout<<q.dequeue()<<endl;
+	cout<<q.dequeue()<<endl;
+	q.enqueue(480);
+	q.enqueue(580);
+	cout<<q.dequeue()<<endl;
+	cout<<q.dequeue()<<endl;
+	cout<<q.dequeue()<<endl;
+	cout<<q.empty()<<endl;
+	
+	return 0;
+}
