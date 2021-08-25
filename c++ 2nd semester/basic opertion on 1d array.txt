@@ -1,0 +1,65 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	int n;
+	cin>>n;
+	int a[1000];
+	for(int i=0;i<n;i++)
+	{
+	    cin>>a[i];
+	}
+	cout<<"array display"<<endl;
+	for(int i=0;i<n;i++)
+	{
+	    cout<<a[i]<<" ";
+	}
+	cout<<endl<<"inserting element"<<endl;
+	int no,index;
+	cin>>no>>index;
+	cout<<"no="<<no<<" index="<<index<<endl;
+	for(int i=n-1;i>=index;i--)
+	{
+	    a[i+1]=a[i];
+	}
+	a[index]=no;
+	cout<<"new array after addition "<<endl;
+	for(int i=0;i<n+1;i++)
+	{
+	    cout<<a[i]<<" ";
+	}
+	cout<<endl<<"deleting element"<<endl;
+	int no1;
+	cin>>no1;
+	cout<<"no= "<<no1<<endl;
+	int i=0;
+	while(i<n+1&& a[i]!=no1)
+	{
+	    i++;
+	}
+	for(int j=i+1;j<n+1;j++)
+	{
+	    a[j-1]=a[j];
+	}
+	a[n]=0;
+	cout<<"new array after deletion "<<endl;
+	for(int i=0;i<n;i++)
+	{
+	    cout<<a[i]<<" ";
+	}
+	cout<<endl<<"searching"<<endl;
+	int no3;
+	cin>>no3;
+	cout<<"no= "<<no3<<endl;
+	int ans=-1;
+	for(int i=0;i<n;i++)
+	{
+	    if(a[i]==no3)
+	    {
+	        ans=i;
+	        break;
+	    }
+	}
+	cout<<"element present at "<<ans<<endl;
+	return 0;
+}
