@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    int n;
+    cin>>n;
+    int a[n][n];
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
+            cin>>a[i][j];
+        }
+    }
+    for(int i=0;i<n;i++)
+    {
+        int minn=a[i][0];
+        int index;
+        for(int j=0;j<n;j++)
+        {
+            if(a[i][j]<=minn)
+            {
+                minn=a[i][j];
+                index=j;
+            }
+        }
+        int maxx=a[0][index];
+        for(int k=0;k<n;k++)
+        {
+            if(a[k][index]>=maxx)
+            {
+                maxx=a[k][index];
+            }
+        }
+        if(maxx==minn)
+            cout<<maxx<<" ";
+    }
+    return 0;
+}
