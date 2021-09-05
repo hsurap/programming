@@ -1,0 +1,104 @@
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+class node{
+    public:
+    int val;
+    node*next;
+    node(int val)
+    {
+        this->val=val;
+        next=NULL;
+    }
+};
+
+node* making_linked_list()
+{
+    node*head=NULL;
+    node*tail=NULL;
+    int no;
+    cin>>no;
+    while(no!=-1)
+    {
+        node*newnode=new node(no);
+        if(head==NULL)
+        {
+            head=newnode;
+            tail=newnode;
+        }
+        else{
+            tail->next=newnode;
+            tail=tail->next;
+        }
+        cin>>no;
+    }
+    return head;
+}
+
+node*reverse(node*head)
+{
+    if(head==NULL || head->next==NULL)
+        return head;
+    node*small=reverse(head->next);
+    head->next->next=head;
+    head->next=NULL;
+    return small;
+}
+
+node*reverse2(node*head,int m,int n)
+{
+    int c1=0,c2=0;
+    node*temp=head;
+    if(m==0)
+    {
+        node*flag=temp;
+        while(c2<=n-1)
+        {
+            flag=flag->next;
+            c2++;
+        }
+        node*flag2=flag->next;
+        flag->next=NULL;
+        node*rev=reverse(temp);
+        temp->next=flag2;
+        return rev;
+    }
+    while(temp!=NULL && c1<=m-2)
+    {
+        temp=temp->next;
+        c1++;
+    }
+    node*temp1=temp->next;
+    temp->next=NULL;
+    node*temp2=temp1;
+    while(temp2!=NULL && c2<=n-m-1)
+    {
+        temp2=temp2->next;
+        c2++;
+    }
+    
+    node*temp3=temp2->next;
+    temp2->next=NULL;
+    node*rev=reverse(temp1);
+    temp->next=rev;
+    temp1->next=temp3;
+    return head;
+}
+void print(node*head)
+{
+    node*temp=head;
+    while(temp!=NULL)
+    {
+        cout<<temp->val<<" ";
+        temp=temp->next;
+    }
+    cout<<endl;
+}
+int main()
+{
+	node*head=making_linked_list();
+	print(head);
+    head=reverse2(head,0,5);
+    // head=reverse(head);
+    print(head);
+}
