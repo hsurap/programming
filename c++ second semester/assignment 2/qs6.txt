@@ -1,0 +1,93 @@
+#include <iostream>
+using namespace std;
+
+class node{
+    public:
+    int val;
+    node*next;
+    node(int val)
+    {
+        this->val=val;
+        next=NULL;
+    }
+};
+
+node* making_linked_list()
+{
+    node*head=NULL;
+    node*tail=NULL;
+    int no;
+    cin>>no;
+    while(no!=-1)
+    {
+        node*newnode=new node(no);
+        if(head==NULL)
+        {
+            head=newnode;
+            tail=newnode;
+        }
+        else{
+            tail->next=newnode;
+            tail=tail->next;
+        }
+        cin>>no;
+    }
+    return head;
+}
+
+int length(node*head)
+{
+    node*temp=head;
+    int count=0;
+    while(temp!=NULL)
+    {
+        count++;
+        temp=temp->next;
+    }
+    return count;
+}
+
+void print(node*head)
+{
+    node*temp=head;
+    while(temp!=NULL)
+    {
+        cout<<temp->val<<" ";
+        temp=temp->next;
+    }
+    cout<<endl;
+}
+
+node* rotate(node*head,int k)
+{
+    if(head==NULL || head->next==NULL)
+            return head;
+        int l=length(head);
+        k=k%l;
+        node*slow=head;
+        node*fast=head;
+        int i=0;
+        while(fast!=NULL && i<k)
+        {
+            fast=fast->next;
+            i++;
+        }
+        while(fast->next!=NULL)
+        {
+            slow=slow->next;
+            fast=fast->next;
+        }
+        fast->next=head;
+        head=slow->next;
+        slow->next=NULL;
+        return head;
+}
+
+int main() {
+	node*head1=making_linked_list();
+	int k;
+	cin>>k;
+	node*head2=rotate(head1,k);
+	print(head2);
+	return 0;
+}
