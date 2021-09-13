@@ -1,0 +1,89 @@
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+class node{
+    public:
+    int val;
+    node*next;
+    node(int val)
+    {
+        this->val=val;
+        next=NULL;
+    }
+};
+
+node* making_linked_list()
+{
+    node*head=NULL;
+    node*tail=NULL;
+    int no;
+    cin>>no;
+    while(no!=-1)
+    {
+        node*newnode=new node(no);
+        if(head==NULL)
+        {
+            head=newnode;
+            tail=newnode;
+        }
+        else{
+            tail->next=newnode;
+            tail=tail->next;
+        }
+        cin>>no;
+    }
+    return head;
+}
+
+node*deleting_all_occurrences(node*head,int val,int&count)
+{
+    if(head==NULL)
+        return NULL;
+    if(head->val==val && head->next==NULL)
+    {
+        count++;
+        return NULL;
+    }
+    node*temp=head;
+    node*prev=NULL;
+    while(temp!=NULL)
+    {
+        prev=temp;
+        temp=temp->next;
+        if(temp!=NULL && temp->val==val)
+        {
+            node*point=temp->next;
+            prev->next=point;
+            delete temp;
+            temp=point;
+            count++;
+        }
+    }
+    if(head->val==val)
+    {
+        node*point=head;
+        head=head->next;
+        delete point;
+        count++;
+    }
+    return head;
+}
+void print(node*head)
+{
+    node*temp=head;
+    while(temp!=NULL)
+    {
+        cout<<temp->val<<" ";
+        temp=temp->next;
+    }
+    cout<<endl;
+}
+int main()
+{
+	node*head=making_linked_list();
+	print(head);
+	int count=0;
+    head=deleting_all_occurrences(head,2,count);
+    print(head);
+    cout<<count<<endl;
+}
