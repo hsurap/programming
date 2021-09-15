@@ -1,0 +1,111 @@
+#include <iostream>
+#include<vector>
+#include<queue>
+using namespace std;
+
+template <typename T>
+class treenode{
+    public:
+    int data;
+    vector<treenode*>children;
+    treenode(T data)
+    {
+        this->data=data;
+    }
+};
+
+void printTree(treenode<int>*root)
+{
+    if(root==NULL)
+        return;
+    cout<<root->data<<":";
+    for(int i=0;i<root->children.size();i++)
+    {
+        cout<<root->children[i]->data<<", ";
+    }
+    cout<<endl;
+    for(int i=0;i<root->children.size();i++)
+    {
+        printTree(root->children[i]);
+    }
+}
+
+treenode<int>*takeInputLevelWise()
+{
+    int rootdata;
+    cout<<"Enter rootdata"<<endl;
+    cin>>rootdata;
+    treenode<int>*root=new treenode<int>(rootdata);
+    queue<treenode<int>*> q;
+    q.push(root);
+    while(q.size()!=0)
+    {
+        treenode<int>*front=q.front();
+        q.pop();
+        int numchild;
+        cout<<"Enter no of children of "<<front->data<<endl;
+        cin>> numchild;
+        for(int i=0;i<numchild;i++)
+        {
+            int child_data;
+            cout<<"enter the "<<i<<" th child of "<<front->data<<endl;
+            cin>>child_data;
+            treenode<int>*child=new treenode<int>(child_data);
+            front->children.push_back(child);
+            q.push(child);
+        }
+    }
+    return root;
+}
+
+void printTreeLevelWise(treenode<int>*root)
+{
+    if(root==NULL)
+        return;
+    
+    queue<treenode<int>*> q;
+    q.push(root);
+    while(q.size()!=0)
+    {
+        treenode<int>*front=q.front();
+        q.pop();
+        cout<<front->data<<":";
+        for(int i=0;i<front->children.size();i++)
+        {
+            cout<<front->children[i]->data<<", ";
+            q.push(front->children[i]);
+        }
+        cout<<endl;
+    }
+}
+
+treenode<int>*takeInput()
+{
+    int no;
+    cout<<"Enter data "<<endl;
+    cin>>no;
+    treenode<int>*root=new treenode <int>(no);
+    int c;
+    cout<<"Enter no of child of "<<no<<endl;
+    cin>>c;
+    for(int i=0;i<c;i++)
+    {
+        treenode<int>*child=takeInput();
+        root->children.push_back(child);
+    }
+    return root;
+}
+
+int main()
+{
+// 	treenode <int>*root=new treenode<int>(1);
+// 	treenode <int>*node1=new treenode<int>(2);
+// 	treenode <int>*node2=new treenode<int>(3);
+// 	root->children.push_back(node1);
+// 	root->children.push_back(node2);
+    // treenode<int>*root=takeInput();
+    treenode<int>*root=takeInputLevelWise();
+// 	printTree(root);
+    printTreeLevelWise(root);
+	return 0;
+}
