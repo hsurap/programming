@@ -1,0 +1,102 @@
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+class node{
+    public:
+    int val;
+    node*next;
+    node(int val)
+    {
+        this->val=val;
+        next=NULL;
+    }
+};
+
+int length(node*head)
+{
+    node*temp=head;
+    int count=0;
+    while(temp!=NULL)
+    {
+        count++;
+        temp=temp->next;
+    }
+    return count;
+}
+
+node* making_linked_list()
+{
+    node*head=NULL;
+    node*tail=NULL;
+    int no;
+    cin>>no;
+    while(no!=-1)
+    {
+        node*newnode=new node(no);
+        if(head==NULL)
+        {
+            head=newnode;
+            tail=newnode;
+        }
+        else{
+            tail->next=newnode;
+            tail=tail->next;
+        }
+        cin>>no;
+    }
+    return head;
+}
+
+int func(node*head,int n,int l)
+{
+    if(head==NULL)
+        return -1;
+    if(n==l)
+        return head->val;
+    return func(head->next,n,l-1);
+}
+
+node* remove(node*head)
+{
+    if(head==NULL || head->next==NULL)
+        return head;
+        
+    node*prev=head;
+    node*curr=head->next;
+    
+    while(curr!=NULL)
+    {
+        if(curr->val!=prev->val)
+        {
+            prev=curr;
+            curr=curr->next;
+        }
+        else{
+            prev->next=curr->next;
+            delete curr;
+            curr=prev->next;
+        }
+    }
+    prev->next=NULL;
+    return head;
+}
+
+void print(node*head)
+{
+    node*temp=head;
+    while(temp!=NULL)
+    {
+        cout<<temp->val<<" ";
+        temp=temp->next;
+    }
+    cout<<endl;
+}
+int main()
+{
+	node*head=making_linked_list();
+	print(head);
+// 	int l=length(head);
+//     cout<<func(head,4,l);
+    node*kk=remove(head);
+    print(kk);
+}
