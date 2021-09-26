@@ -1,0 +1,211 @@
+#include <iostream>
+using namespace std;
+
+class node{
+    public:
+    node*next;
+    node*prev;
+    int data;
+    node(int data)
+    {
+        this->data=data;
+        next=NULL;
+        prev=NULL;
+    }
+};
+
+int findSize(node *head)
+{
+   int res = 0;
+   while (head != NULL)
+   {
+       res++;
+       head = head->next;
+   }
+   return res;
+}
+
+node*insertionAtHead(node*head,int val)
+{
+    if(head==NULL)
+    {
+        node*newnode=new node(val);
+        head=newnode;
+        return head;
+    }
+    node*newnode=new node(val);
+    newnode->next=head;
+    head->prev=newnode;
+    head=newnode;
+    return head;
+}
+
+node*insertionAtTail(node*head,int val)
+{
+    if(head==NULL)
+    {
+        node*newnode=new node(val);
+        head=newnode;
+        return head;
+    }
+    node*tail=head;
+    while(tail->next!=NULL)
+    {
+        tail=tail->next;
+    }
+    node*newnode=new node(val);
+    tail->next=newnode;
+    newnode->prev=tail;
+    return head;
+}
+
+node*insertionAtParticularPosition(node*head,int val,int pos)
+{
+    if(pos==0)
+    {
+        node*ans=insertionAtHead(head,val);
+        return ans;
+    }
+    if(pos==findSize(head)-1)
+    {
+        node*ans=insertionAtTail(head,val);
+        return ans;
+    }
+    if(pos>findSize(head)-1)
+        return head;
+    
+    int count=0;
+    node*temp=head;
+    while(temp!=NULL && count<pos-1)
+    {
+        temp=temp->next;
+        count++;
+    }
+    node*newnode=new node(val);
+    newnode->next=temp->next;
+    temp->next->prev=newnode;
+    temp->next=newnode;
+    newnode->prev=temp;
+    return head;
+}
+
+void print(node*head)
+{
+    node*temp=head;
+    while(temp!=NULL)
+    {
+        if(temp->prev!=NULL)
+            cout<<temp->prev->data<<" ";
+        
+        cout<<temp->data<<" ";
+        
+        if(temp->next!=NULL)
+            cout<<temp->next->data<<" ";
+            
+        cout<<endl;
+        temp=temp->next;
+    }
+    // while(temp!=NULL)
+    // {
+    //     cout<<temp->data<<" ";
+    //     temp=temp->next;
+    // }
+}
+
+node*deletionAthead(node*head)
+{
+    if(head==NULL || head->next==NULL)
+    {
+        return NULL;
+    }
+    node*temp=head->next;
+    temp->prev=NULL;
+    delete head;
+    head=temp;
+    return head;
+}
+
+node*deletionAtTail(node*head)
+{
+    if(head==NULL || head->next==NULL)
+    {
+        return NULL;
+    }
+    node*a=NULL;
+    node*b=head;
+    while(b->next!=NULL)
+    {
+        a=b;
+        b=b->next;
+    }
+    a->next=NULL;
+    delete b;
+    return head;
+}
+
+node*deletionOfSpecificNode(node*head,int val)
+{
+    if(head == NULL)
+        return NULL;
+    
+    if(head->data==val)
+    {
+        node*ans=deletionAthead(head);
+        return ans;
+    }
+    
+    node*temp=head;
+    node*a=NULL;
+    while(temp!=NULL && temp->data!=val)
+    {
+        a=temp;
+        temp=temp->next;
+    }
+    if(temp!=NULL)
+    {
+        a->next=temp->next;
+        if(temp->next!=NULL)
+        {
+            temp->next->prev=a;
+        }
+        delete temp;
+    }
+    return head;
+}
+
+bool search(node*head,int val)
+{
+    node*temp=head;
+    while(temp!=NULL)
+    {
+        if(temp->data==val)
+            return true;
+        temp=temp->next;
+    }
+    return false;
+}
+
+int main()
+{
+    node*head;
+    head=insertionAtHead(head,1);
+    head=insertionAtHead(head,2);
+    head=insertionAtHead(head,3);
+    head=insertionAtHead(head,4);
+    head=insertionAtTail(head,5);
+    head=insertionAtTail(head,6);
+    head=insertionAtTail(head,7);
+    // head=insertionAtParticularPosition(head,100,0);
+    // head=insertionAtParticularPosition(head,200,4);
+    // head=insertionAtParticularPosition(head,300,2);
+    // head=insertionAtParticularPosition(head,400,4);
+    // head=deletionAthead(head);
+    // head=deletionAtTail(head);
+    head=deletionOfSpecificNode(head,4);
+    head=deletionOfSpecificNode(head,1);
+    head=deletionOfSpecificNode(head,7);
+    cout<<endl;
+    // cout<<search(head,4)<<endl;
+    // cout<<search(head,2)<<endl;
+    print(head);
+}
