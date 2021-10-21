@@ -1,0 +1,77 @@
+class Solution
+{
+    public:
+    //Function to add two numbers represented by linked list.
+    int len(Node*head)
+    {
+        Node*temp=head;
+        int count=0;
+        while(temp!=NULL)
+        {
+            count++;
+            temp=temp->next;
+        }
+        return count;
+    }
+    Node*reverse(Node*head)
+    {
+        if(head==NULL || head->next==NULL)
+            return head;
+        Node*small=reverse(head->next);
+        head->next->next=head;
+        head->next=NULL;
+        return small;
+    }
+    struct Node* addTwoLists(struct Node* first, struct Node* second)
+    {
+        if(first==NULL)
+            return second;
+        if(second==NULL)
+            return first;
+        
+        first=reverse(first);
+        second=reverse(second);
+        int l1=len(first);
+        int l2=len(second);
+        Node*temp1,*temp2;
+        Node*fa;
+        if(l1<=l2)
+        {
+            temp2=second;
+            temp1=first;
+            fa=temp2;
+        }
+        else{
+            temp2=first;
+            temp1=second;
+            fa=temp2;
+        }
+        int rem=0;
+        while(temp1!=NULL)
+        {
+            int add=temp1->data+temp2->data+rem;
+            temp2->data=add%10;
+            rem=add/10;
+            temp1=temp1->next;
+            temp2=temp2->next;
+        }
+        while(temp2!=NULL)
+        {
+            int sum=temp2->data+rem;
+            temp2->data=sum%10;
+            rem=sum/10;
+            temp2=temp2->next;
+        }
+        if(rem==0)
+        {
+            return reverse(fa);
+        }
+        else{
+            
+            Node*ans=reverse(fa);
+            Node*newnode=new Node(rem);
+            newnode->next=ans;
+            return newnode;
+        }
+    }
+};
