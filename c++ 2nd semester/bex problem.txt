@@ -1,0 +1,67 @@
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+int main() {
+	int n;
+	cin>>n;
+	stack<pair<int,string>>st;
+	for(int i=0;i<n;i++)
+	{
+	    int no;
+	    string s;
+	    cin>>no;
+	    if(no!=-1)
+	        cin>>s;
+	    
+	    if(no!=-1)
+	    {
+	        pair<int , string> p;
+	        p.first=no;
+	        p.second=s;
+	        st.push(p);
+	    }
+	    else{
+	        int min_no=INT_MAX;
+	        string min_str="";
+	        stack<pair<int,string>>newst;
+	        while(!st.empty())
+	        {
+	            pair<int,string>front=st.top();
+	            st.pop();
+	            if(front.first<min_no)
+	            {
+	                min_no=front.first;
+	                min_str=front.second;
+	            }
+	            newst.push(front);
+	        }
+	       // cout<<min_no<<" "<<min_str<<endl<<endl;
+	       // while(!newst.empty())
+    	   // {
+    	   //     cout<<newst.top().first<<" "<<newst.top().second<<endl;
+    	   //     newst.pop();
+    	   // }
+	        int count=0;
+	        while(!newst.empty() && newst.top().first!=min_no)
+	        {
+	            st.push(newst.top());
+	            newst.pop();
+	        }
+	        if(!newst.empty())
+	            newst.pop();
+	       // while(!newst.empty())
+    	   // {
+    	   //     cout<<newst.top().first<<" "<<newst.top().second<<endl;
+    	   //     newst.pop();
+    	   // }
+	        while(!newst.empty())
+	        {
+	            count++;
+	            newst.pop();
+	        }
+	        cout<<count<<" "<<min_str<<endl;
+	    }
+	}
+	return 0;
+}
