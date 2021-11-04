@@ -1,0 +1,232 @@
+#include <iostream>
+using namespace std;
+
+class node{
+    public:
+    node*next;
+    int data;
+    node(int data)
+    {
+        this->data=data;
+        next=NULL;
+    }
+};
+
+int sizee(node*head)
+{
+    node* temp = head;
+    int result = 0;
+    if (head != NULL) {
+        do {
+            temp = temp->next;
+            result++;
+        } while (temp != head);
+    }
+ 
+    return result;
+}
+
+node*insertion_at_tailnode(node*head,int val)
+{
+    if(head==NULL)
+    {
+        node*newnode=new node(val);
+        head=newnode;
+        head->next=head;
+        return head;
+    }
+    if(head->next==head)
+    {
+        node*newnode=new node(val);
+        head->next=newnode;
+        newnode->next=head;
+        return head;
+    }
+    node*temp=head->next;
+    while(temp->next!=head)
+    {
+        temp=temp->next;
+    }
+    node*newnode=new node(val);
+    temp->next=newnode;
+    newnode->next=head;
+    return head;
+}
+
+node*insertion_at_headnode(node*head,int val)
+{
+    if(head==NULL)
+    {
+        node*newnode=new node(val);
+        head=newnode;
+        head->next=head;
+        return head;
+    }
+    node*newnode=new node(val);
+    newnode->next=head;
+    node*temp=head;
+    while (temp->next!=newnode->next)
+    {
+        temp=temp->next;
+    }
+    temp->next=newnode;
+    head=newnode;
+    return head;
+}
+
+
+node*insertion_at_particularPosition(node*head,int val,int pos)
+{
+    if(pos==0)
+    {
+        node*ans=insertion_at_headnode(head,val);
+        return ans;
+    }
+    if(pos==sizee(head)-1)
+    {
+        node*ans=insertion_at_tailnode(head,val);
+        return ans;
+    }
+    if(pos>sizee(head)-1 )
+        return head;
+    
+    node*temp= head;
+    int count=0;
+    node*newnode=new node(val);
+    while(count<pos-1)
+    {
+        temp=temp->next;
+        count++;
+    }
+    newnode->next=temp->next;
+    temp->next=newnode;
+    return head;
+    
+}
+
+void print(node*head)
+{
+    if(head!=NULL)
+        cout<<head->data<<" ";
+    node*temp=head->next;
+    while(temp!=head)
+    {
+        cout<<temp->data<<" ";
+        temp=temp->next;
+    }
+    cout<<temp->data;
+}
+
+node*deletionAtHead(node*head)
+{
+    if(head==NULL || head->next==head)
+        return NULL;
+    node*temp=head->next;
+    while(temp->next!=head)
+    {
+        temp=temp->next;
+    }
+    node*rem=head;
+    temp->next=head->next;
+    delete rem;
+    head=temp->next;
+    return head;
+}
+
+node*deletionAtTail(node*head)
+{
+    if(head==NULL || head->next==head)
+        return NULL;
+    node*temp=head->next;
+    node*prev=head;
+    while(temp->next!=head)
+    {
+        prev=temp;
+        temp=temp->next;
+    }
+    prev->next=head;
+    delete temp;
+    return head;
+}
+
+node*deletionTheSpecificNode(node*head,int val)
+{
+    if(head==NULL)
+        return NULL;
+    
+    if(head->data==val)
+    {
+        node*ans=deletionAtHead(head);
+        return ans;
+    }
+    node*temp=head->next;
+    node*prev=head;
+    while(temp->data!=val && temp->next!=head)
+    {
+        prev=temp;
+        temp=temp->next;
+    }
+    if(temp->next!=head)
+    {
+        prev->next=temp->next;
+        delete temp;
+    }
+    else{
+        if(temp->data==val)
+        {
+            node*ans=deletionAtTail(head);
+            return ans;
+        }
+    }
+    return head;
+}
+
+bool search(node*head,int val)
+{
+    if(head==NULL)
+        return false;
+    if(head->data==val)
+        return true;
+    
+    node* temp = head;
+    if (head != NULL) {
+        do {
+            temp = temp->next;
+            if(temp->data==val)
+                return true;
+        } 
+        while (temp != head);
+    }
+ 
+    return false;
+}
+
+int main()
+{
+    node*head;
+    head=insertion_at_headnode(head,1);
+    head=insertion_at_headnode(head,2);
+    head=insertion_at_headnode(head,3);
+    head=insertion_at_headnode(head,4);
+    head=insertion_at_headnode(head,5);
+    // head=insertion_at_tailnode(head,6);
+    // head=insertion_at_tailnode(head,7);
+    // head=insertion_at_tailnode(head,8);
+    // head=insertion_at_tailnode(head,9);
+    // head=insertion_at_particularPosition(head,100,0);
+    // head=insertion_at_particularPosition(head,200,9);
+    // head=insertion_at_particularPosition(head,786,2);
+    // head=insertion_at_particularPosition(head,687,6);
+    head=deletionAtHead(head);
+    head=deletionAtTail(head);
+    head=deletionTheSpecificNode(head,5);
+    head=deletionTheSpecificNode(head,3);
+    head=deletionTheSpecificNode(head,1);
+    print(head);
+    cout<<endl;
+    // cout<<search(head,4)<<" ";
+    // cout<<search(head,8);
+    
+    // cout<<sizee(head);
+    return 0;
+}
