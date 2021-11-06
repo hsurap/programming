@@ -1,0 +1,83 @@
+#include <iostream>
+using namespace std;
+
+class node{
+    public:
+    int data;
+    node*next;
+    node*prev;
+    node(int data)
+    {
+        this->data=data;
+        next=NULL;
+        prev=NULL;
+    }
+};
+
+node*takeInput()
+{
+    int val;
+    cin>>val;
+    node*head=NULL;
+    node*tail=NULL;
+    while(val!=-1)
+    {
+        node*newnode = new node(val);
+        if(head==NULL)
+        {
+            head=newnode;
+            tail=newnode;
+        }
+        else{
+            tail->next=newnode;
+            newnode->prev=tail;
+            tail=tail->next;
+        }
+        cin>>val;
+    }
+    return head;
+
+}
+
+void print(node*head)
+{
+    node*temp=head;
+    while(temp!=NULL)
+    {
+        if(temp->prev!=NULL)
+            cout<<temp->prev->data<<" ";
+        
+        cout<<temp->data<<" ";
+        
+        if(temp->next!=NULL)
+            cout<<temp->next->data<<" ";
+            
+        cout<<endl;
+        temp=temp->next;
+    }
+    // while(temp!=NULL)
+    // {
+    //     cout<<temp->data<<" ";
+    //     temp=temp->next;
+    // }
+}
+
+int size(node*head)
+{
+    int count=0;
+    while(head!=NULL)
+    {
+        count++;
+        head=head->next;
+    }
+    return count;
+}
+
+int main()
+{
+    node*head=takeInput();
+    print(head);
+    cout<<endl;
+    cout<<size(head);
+    return 0;
+}
