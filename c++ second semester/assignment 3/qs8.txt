@@ -1,0 +1,137 @@
+#include <iostream>
+using namespace std;
+
+class node{
+    public:
+    int data;
+    node*next;
+    node*prev;
+    node(int data)
+    {
+        this->data=data;
+        next=NULL;
+        prev=NULL;
+    }
+};
+
+node*takeInput()
+{
+    int val;
+    cin>>val;
+    node*head=NULL;
+    node*tail=NULL;
+    while(val!=-1)
+    {
+        node*newnode = new node(val);
+        if(head==NULL)
+        {
+            head=newnode;
+            tail=newnode;
+        }
+        else{
+            tail->next=newnode;
+            newnode->prev=tail;
+            tail=tail->next;
+        }
+        cin>>val;
+    }
+    return head;
+
+}
+
+void print(node*head)
+{
+    node*temp=head;
+    // while(temp!=NULL)
+    // {
+    //     if(temp->prev!=NULL)
+    //         cout<<temp->prev->data<<" ";
+        
+    //     cout<<temp->data<<" ";
+        
+    //     if(temp->next!=NULL)
+    //         cout<<temp->next->data<<" ";
+            
+    //     cout<<endl;
+    //     temp=temp->next;
+    // }
+    while(temp!=NULL)
+    {
+        cout<<temp->data<<" ";
+        temp=temp->next;
+    }
+}
+
+int size(node*head)
+{
+    int count=0;
+    while(head!=NULL)
+    {
+        count++;
+        head=head->next;
+    }
+    return count;
+}
+
+node*reverse(node*head)
+{
+    node *temp = NULL;
+    node *current = head;
+
+ 
+    while (current != NULL)
+    {
+        temp = current->prev;
+        current->prev = current->next;
+        current->next = temp;            
+        current = current->prev;
+    }
+    if(temp != NULL )
+    {
+        head = temp->prev;
+        return head;
+    }
+    else{
+        return head;
+    }  
+}
+
+node*reverseInGroup(node*head,int k)
+{
+    if(head==NULL || k==0)
+        return head;
+    
+    int count=0;
+    node*temp=head;
+    while(temp!=NULL && count<k-1)
+    {
+        temp=temp->next;
+        count++;
+    }
+    node *b, *small=NULL;
+    if(temp!=NULL)
+    {        
+        node*b=temp->next;
+        temp->next=NULL;   
+        if(b!=NULL)     
+            b->prev = NULL;
+        small=reverseInGroup(b,k);
+    }
+    node*ans=reverse(head);
+    head->next=small;
+    if(small!=NULL)
+    small->prev=head;
+    return ans;
+}
+
+int main()
+{
+    node*head=takeInput();
+    print(head);
+    cout<<endl;
+    // head =reverse(head);
+    // print(head);
+    head=reverseInGroup(head,4);
+    print(head);
+    return 0;
+}
