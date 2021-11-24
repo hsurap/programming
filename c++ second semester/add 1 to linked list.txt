@@ -1,0 +1,50 @@
+class Solution
+{
+    public:
+    Node*reverse(Node*head)
+    {
+        if(head==NULL || head->next==NULL)
+            return head;
+        Node*small=reverse(head->next);
+        head->next->next=head;
+        head->next=NULL;
+        return small;
+    }
+    Node* addOne(Node *head) 
+    {
+        if(head==NULL)
+            return NULL;
+        
+        Node*rev=reverse(head);
+        Node*rev_tail=rev;
+        int carry=1;
+        bool check=false;
+        while(carry==1)
+        {
+            if(rev_tail==NULL)
+            {
+                check=true;
+                break;
+            }
+            if(rev_tail->data!=9)
+            {
+                 rev_tail->data+=1;
+                 carry=0;
+            }
+            else{
+                rev_tail->data=0;
+                carry=1;
+                rev_tail=rev_tail->next;
+            }
+               
+        }
+        Node*ans=reverse(rev);
+        if(check==true)
+        {
+            Node*newnode=new Node(1);
+            newnode->next=ans;
+            return newnode;
+        }
+        return ans;
+    }
+};
