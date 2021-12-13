@@ -1,0 +1,55 @@
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+bool sortbysec(const pair<int,int> &a,
+              const pair<int,int> &b)
+{
+    return (a.second < b.second);
+}
+
+int main() {
+	int n;
+	cin>>n;
+	int bt[n];
+	for(int i=0;i<n;i++)
+	{
+	    cin>>bt[i];
+	}
+	vector<pair<int,int>>v;
+	for(int i=0;i<n;i++)
+	{
+	    pair<int,int>p;
+	    p.first=i;
+	    p.second=bt[i];
+	    v.push_back(p);
+	}
+	sort(v.begin(),v.end(),sortbysec);
+	int ct[n];
+	ct[v[0].first]=v[0].second;
+	for(int i=1;i<n;i++)
+	{
+	    ct[v[i].first]=ct[v[i-1].first] + v[i].second;
+	}
+// 	for(int i=0;i<n;i++)
+// 	{
+// 	    cout<<ct[i]<<" ";
+// 	}
+	int tat[n];
+	for(int i=0;i<n;i++)
+	{
+	    tat[i]=ct[i];
+	}
+	
+	int wt[n];
+	for(int i=0;i<n;i++)
+	{
+	    wt[i]=tat[i]-bt[i];
+	}
+	
+	for(int i=0;i<n;i++)
+	{
+	    cout<<"P"<<i<<" "<<bt[i]<<" "<<ct[i]<<" "<<tat[i]<<" "<<wt[i]<<endl;
+	}
+	return 0;
+}
