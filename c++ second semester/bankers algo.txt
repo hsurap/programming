@@ -1,0 +1,92 @@
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+int main() {
+	int n,m;
+	cin>>n>>m;
+	vector<int>ans;
+	
+	int alac[n][m];
+	for(int i=0;i<n;i++)
+	{
+	    for(int j=0;j<m;j++)
+	    {
+	        cin>>alac[i][j];
+	    }
+	}
+	
+	int max[n][m];
+	for(int i=0;i<n;i++)
+	{
+	    for(int j=0;j<m;j++)
+	    {
+	        cin>>max[i][j];
+	    }
+	}
+	
+	int avail[m];
+	for(int i=0;i<m;i++)
+	{
+	    cin>>avail[i];
+	}
+	
+	int need[n][m];
+	for(int i=0;i<n;i++)
+	{
+	    for(int j=0;j<m;j++)
+	    {
+	        need[i][j]=max[i][j]-alac[i][j];
+	    }
+	}
+	
+	int count=0;
+	int check[n]={0};
+	
+	while(count < n )
+	{
+	    bool out=false;
+	    for(int i=0;i<n;i++)
+	    {
+	        if(check[i]==0)
+	        {
+	            bool flag=true;
+	            for(int j=0;j<m;j++)
+	            {
+	                if(avail[j]<need[i][j])
+	                {
+	                    flag=false;
+	                    break;
+	                }
+	            }
+	            if(flag==true)
+	            {
+	                check[i]=1;
+	                for(int j=0;j<m;j++)
+	                {
+	                    avail[j]+=alac[i][j];
+	                }
+	                count++;
+	                out=true;
+	                ans.push_back(i);
+	            }
+	        }
+	    }
+	    if(out==false)
+	    {
+	        break;
+	    }
+	}
+	if(count<n)
+	{
+	    cout<<"not a safe state"<<endl;
+	}
+	else{
+	    for(int k=0;k<ans.size();k++)
+	    {
+	        cout<<ans[k]<<" ";
+	    }
+	}
+	
+	return 0;
+}
