@@ -1,0 +1,63 @@
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+int main() {
+	int n,tq;
+	cin>>n>>tq;
+	int bt[n],rbt[n];
+	for(int i=0;i<n;i++)
+	{
+	    cin>>bt[i];
+	    rbt[i]=bt[i];
+	}
+	int curr_time=0;
+	int ct[n]={0};
+	int count=0;
+	while(true)
+	{
+	    for(int i=0;i<n;i++)
+	    {
+	        int temp=tq;
+	        if(rbt[i]==0)
+	        {
+	            count++;
+	            continue;
+	        }
+	        if(rbt[i]>tq)
+	        {
+	            rbt[i]-=tq;
+	        }
+	        else{
+	            if(rbt[i]>=0)
+	            {
+	                temp=rbt[i];
+	                rbt[i]=0;
+	            }
+	        }
+	        curr_time+=temp;
+	        ct[i]=curr_time;
+	    }
+	    if(count==n)
+	        break;
+	    
+	}
+	
+	int tat[n];
+	for(int i=0;i<n;i++)
+	{
+	    tat[i]=ct[i];
+	}
+	
+	int wt[n];
+	for(int i=0;i<n;i++)
+	{
+	    wt[i]=tat[i]-bt[i];
+	}
+	
+	for(int i=0;i<n;i++)
+	{
+	    cout<<"P"<<i<<" "<<bt[i]<<" "<<ct[i]<<" "<<tat[i]<<" "<<wt[i]<<endl;
+	}
+	return 0;
+}
