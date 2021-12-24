@@ -1,0 +1,175 @@
+// driver
+
+#include <bits/stdc++.h>
+using namespace std;
+
+/* Linked list Node */
+struct Node {
+    int data;
+    struct Node* next;
+    Node(int x) {
+        data = x;
+        next = NULL;
+    }
+};
+
+struct Node* buildList(int size)
+{
+    int val;
+    cin>> val;
+    
+    Node* head = new Node(val);
+    Node* tail = head;
+    
+    for(int i=0; i<size-1; i++)
+    {
+        cin>> val;
+        tail->next = new Node(val);
+        tail = tail->next;
+    }
+    
+    return head;
+}
+
+void printList(Node* n)
+{
+    while(n)
+    {
+        cout<< n->data << " ";
+        n = n->next;
+    }
+    cout<< endl;
+}
+
+
+ // } Driver Code Ends
+/* node for linked list:
+
+struct Node {
+    int data;
+    struct Node* next;
+    Node(int x) {
+        data = x;
+        next = NULL;
+    }
+};
+
+*/
+
+class Solution
+{
+    public:
+    //Function to add two numbers represented by linked list.
+    Node*reverse(Node*head)
+    {
+        if(head==NULL || head->next==NULL)
+            return head;
+        Node*small=reverse(head->next);
+        head->next->next=head;
+        head->next=NULL;
+        return small;
+    }
+    struct Node* addTwoLists(struct Node* first, struct Node* second)
+    {
+        if(first==NULL)
+            return second;
+        if(second==NULL)
+            return first;
+        Node*rfirst=reverse(first);
+        Node*rsecond=reverse(second);
+        int carry=0;
+        Node*hans=NULL;
+        Node*tans=NULL;
+        while(rfirst!=NULL && rsecond!=NULL)
+        {
+            int sum=rfirst->data+rsecond->data+carry;
+            int ele=sum%10;
+            Node*newnode=new Node(ele);
+            carry=sum/10;
+            if(hans==NULL)
+            {
+                hans=newnode;
+                tans=newnode;
+            }
+            else{
+                tans->next=newnode;
+                tans=tans->next;
+            }
+            rfirst=rfirst->next;
+            rsecond=rsecond->next;
+        }
+        if(rfirst==NULL)
+        {
+            while(rsecond!=NULL)
+            {
+                int sum=rsecond->data+carry;
+                int ele=sum%10;
+                Node*newnode=new Node(ele);
+                carry=sum/10;
+                if(hans==NULL)
+                {
+                    hans=newnode;
+                    tans=newnode;
+                }
+                else{
+                    tans->next=newnode;
+                    tans=tans->next;
+                }
+                rsecond=rsecond->next;
+            }
+            tans->next=NULL;
+        }
+        else{
+            while(rfirst!=NULL)
+            {
+                int sum=rfirst->data+carry;
+                int ele=sum%10;
+                Node*newnode=new Node(ele);
+                carry=sum/10;
+                if(hans==NULL)
+                {
+                    hans=newnode;
+                    tans=newnode;
+                }
+                else{
+                    tans->next=newnode;
+                    tans=tans->next;
+                }
+                rfirst=rfirst->next;
+            }
+            tans->next=NULL;
+        }
+        if(carry!=0)
+        {
+            Node*anode=new Node(carry);
+            tans->next=anode;
+            anode->next=NULL;
+        }
+        Node*finalans=reverse(hans);
+        return finalans;
+    }
+};
+
+
+// { Driver Code Starts.
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n, m;
+        
+        cin>>n;
+        Node* first = buildList(n);
+        
+        cin>>m;
+        Node* second = buildList(m);
+        Solution ob;
+        Node* res = ob.addTwoLists(first,second);
+        printList(res);
+    }
+    return 0;
+}
+  // } Driver Code Ends
