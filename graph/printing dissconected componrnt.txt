@@ -1,0 +1,106 @@
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+void printbfs(int**edges,int n,int sv,bool*&visit)
+{
+    queue<int>q;
+    q.push(sv);
+    visit[sv]=true;
+    while(q.size()!=0)
+    {
+        int front=q.front();
+        cout<<q.front()<<" ";
+        q.pop();
+        for(int i=0;i<n;i++)
+        {
+            if(edges[sv][i]==1)
+            {
+                if(i==sv)
+                    continue;
+                if(visit[i]==true)
+                    continue;
+                else
+                {
+                    q.push(i);
+                    visit[i]=true;
+                }
+            }
+        }
+        
+    }
+}
+
+void BFS(int**edges,int n)
+{
+    bool *visit=new bool[n];
+    for(int i=0;i<n;i++)
+        visit[i]=false;
+    for(int i=0;i<n;i++)
+    {
+        if(visit[i]==false)
+            printbfs(edges,n,i,visit);
+    }
+    delete []visit;
+}
+
+
+
+void printdfs(int**edges,int n,int sv,bool*&visit)
+{
+    cout<<sv<<" ";
+    visit[sv]=true;
+    for(int i=0;i<n;i++)
+    {
+        if(edges[sv][i]==1)
+        {
+            if(i==sv)
+                continue;
+            if(visit[i]==true)
+                continue;
+            else
+                printdfs(edges,n,i,visit);
+        }
+    }
+}
+
+void DFS(int **edges,int n)
+{
+    bool *visit=new bool[n];
+    for(int i=0;i<n;i++)
+        visit[i]=false;
+    for(int i=0;i<n;i++)
+    {
+        if(visit[i]==false)
+            printdfs(edges,n,i,visit);
+    }
+    delete []visit;
+}
+
+
+
+int main() 
+{
+	int n,e;
+	cin>>n>>e;
+	int**edges=new int*[n];
+	for(int i=0;i<n;i++)
+	{
+	    edges[i]=new int[n];
+	    for(int j=0;j<n;j++)
+	    {
+	        edges[i][j]=0;
+	    }
+	}
+	int f,s;
+	for(int i=0;i<e;i++)
+	{
+	    cin>>f>>s;
+	    edges[f][s]=1;
+	    edges[s][f]=1;
+	}
+	DFS(edges,n);
+// 	cout<<endl;
+// 	BFS(edges,n);
+	return 0;
+}
