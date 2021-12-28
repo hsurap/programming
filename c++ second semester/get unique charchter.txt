@@ -1,0 +1,164 @@
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+class node{
+    public:
+    char val;
+    node*next;
+    node(char val)
+    {
+        this->val=val;
+        next=NULL;
+    }
+};
+
+bool check(node*head,char data)
+{
+    if(head==NULL)
+        return false;
+    
+    if(head->val==data)
+        return true;
+    
+    return check(head->next,data);
+}
+
+node*deleting_specific_node(node*head,char data)
+{
+    if(head==NULL)
+        return NULL;
+    if(head->val==data)
+        return head->next;
+    node*temp=head;
+    while(temp!=NULL && temp->next->val!=data)
+    {
+        temp=temp->next;
+    }
+    if(temp!=NULL)
+    {
+        node*point=temp->next;
+        temp->next=point->next;
+        delete point;
+    }
+    return head;
+}
+
+node* insertion_at_tail(node*head,char val)
+{
+    node*newnode=new node(val);
+    if(head==NULL)
+    {
+        head=newnode;
+        return head;
+    }
+    node*temp=head;
+    while(temp->next!=NULL)
+    {
+        temp=temp->next;
+    }
+    temp->next=newnode;
+    return head;
+}
+
+node*insertion_at_middle(node*head,char data)
+{
+    if (head == NULL)
+    {
+        node*newnode=new node(data);
+        head=newnode;
+        return head;
+    }
+    else if(head->next==NULL)
+    {
+        node*newnode=new node(data);
+        head->next=newnode;
+        return head;
+    }
+    else 
+    {
+        node* slow = head;
+        node* fast = head->next;
+        node*newnode=new node(data);
+        while (fast && fast->next) {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        newnode->next = slow->next;
+        slow->next = newnode;
+        return head;
+    }
+}
+
+void print(node*head)
+{
+    node*temp=head;
+    while(temp!=NULL)
+    {
+        cout<<temp->val<<" ";
+        temp=temp->next;
+    }
+    // cout<<endl;
+}
+
+int main() {
+	string s;
+	cin>>s;
+	node*head=NULL;
+	for(int i=0;i<s.size();i++)
+	{
+	    char ch=s[i];
+	    if(check(head,ch))
+	    {
+	        head=deleting_specific_node(head,ch);
+	        head=insertion_at_middle(head,ch);
+	    }
+	    else{
+	        head=insertion_at_tail(head,ch);
+	    }
+	}
+	
+// 	print(head);
+// 	cout<<endl;
+	node*temp=head;
+	int minn=INT_MAX;
+	int maxx=INT_MIN;
+	node*maxnode=NULL;
+	node*minnode=NULL;
+	int p1=-1,p2=-1;
+	int cp=0;
+	node*secondhead;
+	while(temp!=NULL)
+	{
+	    if(temp->val-'a' > maxx)
+	    {
+	        maxx=temp->val-'a';
+	        maxnode=temp;
+	        p2=cp;
+	    }
+	    if(temp->val-'a' < minn)
+	    {
+	        minn=temp->val-'a';
+	        minnode=temp;
+	        p1=cp;
+	    }
+	    temp=temp->next;
+	    cp++;
+	}
+// 	if(p1<p2)
+// 	{
+	    secondhead=minnode->next;
+	    minnode->next=NULL;
+// 	}
+// 	else{
+// 	    secondhead=maxnode->next;
+// 	    maxnode->next=NULL;
+// 	}
+	
+// 	cout<<maxnode->val<<" "<<minnode->val<<endl;
+	print(head);
+	cout<<endl;
+	print(secondhead);
+	
+	return 0;
+}
