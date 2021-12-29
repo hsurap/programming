@@ -1,0 +1,312 @@
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+int a[100][100][100];
+
+void move_right_to_left(int p,int q,int r,int z,int y,int x)
+{
+    int check[100][100][100]={0};
+    int time=0;
+    while(time<r)
+    {
+        int count=1;
+        // cout<<"--- ";
+        cout<<a[z][y][x]<<" ";
+        // cout<<"--- ";
+        // cout<<" z= "<<z<<" y= "<<y<<" x= "<<x<<endl;
+        check[z][y][x]=-1;
+        while(count<(p*q))
+        {
+            while(z+1<p && count<(p*r))
+            {
+                z=z+1;
+                if(check[z][y][x]!=0)
+                    break;
+                else{
+                    cout<<a[z][y][x]<<" ";
+                    //cout<<" z= "<<z<<" y= "<<y<<" x= "<<x<<endl;
+                    check[z][y][x]=-1;
+                    count++;
+                }
+            }
+            while(y+1<q && count<(p*r))
+            {
+                y=y+1;
+                if(check[z][y][x]!=0)
+                    break;
+                else{
+                    cout<<a[z][y][x]<<" ";
+                    //cout<<" z= "<<z<<" y= "<<y<<" x= "<<x<<endl;
+                    check[z][y][x]=-1;
+                    count++;
+                }
+            }
+            while(z-1>=0 && count<(p*r))
+            {
+                z=z-1;
+                if(check[z][y][x]!=0)
+                    break;
+                else{
+                    cout<<a[z][y][x]<<" ";
+                    //cout<<" z= "<<z<<" y= "<<y<<" x= "<<x<<endl;
+                    check[z][y][x]=-1;
+                    count++;
+                }
+            }
+            while(y-1>=0 && count<(p*r))
+            {
+                y=y-1;
+                if(check[z][y][x]!=0)
+                    break;
+                else{
+                    cout<<a[z][y][x]<<" ";
+                    //cout<<" z= "<<z<<" y= "<<y<<" x= "<<x<<endl;
+                    check[z][y][x]=-1;
+                    count++;
+                }
+            }
+        }
+        time++;
+        x--;
+    }
+}
+
+
+void move_left_to_right(int p,int q,int r,int z,int y,int x)
+{
+    int check[100][100][100]={0};
+    int time=0;
+    while(time<r)
+    {
+        int count=1;
+        // cout<<"--- ";
+        cout<<a[z][y][x]<<" ";
+        // cout<<"--- ";
+        // cout<<" z= "<<z<<" y= "<<y<<" x= "<<x<<endl;
+        check[z][y][x]=-1;
+        while(count<(p*q))
+        {
+            while(z+1<p && count<(p*r))
+            {
+                z=z+1;
+                if(check[z][y][x]!=0)
+                    break;
+                else{
+                    cout<<a[z][y][x]<<" ";
+                    //cout<<" z= "<<z<<" y= "<<y<<" x= "<<x<<endl;
+                    check[z][y][x]=-1;
+                    count++;
+                }
+            }
+            while(y+1<q && count<(p*r))
+            {
+                y=y+1;
+                if(check[z][y][x]!=0)
+                    break;
+                else{
+                    cout<<a[z][y][x]<<" ";
+                    //cout<<" z= "<<z<<" y= "<<y<<" x= "<<x<<endl;
+                    check[z][y][x]=-1;
+                    count++;
+                }
+            }
+            while(z-1>=0 && count<(p*r))
+            {
+                z=z-1;
+                if(check[z][y][x]!=0)
+                    break;
+                else{
+                    cout<<a[z][y][x]<<" ";
+                    //cout<<" z= "<<z<<" y= "<<y<<" x= "<<x<<endl;
+                    check[z][y][x]=-1;
+                    count++;
+                }
+            }
+            while(y-1>=0 && count<(p*r))
+            {
+                y=y-1;
+                if(check[z][y][x]!=0)
+                    break;
+                else{
+                    cout<<a[z][y][x]<<" ";
+                    //cout<<" z= "<<z<<" y= "<<y<<" x= "<<x<<endl;
+                    check[z][y][x]=-1;
+                    count++;
+                }
+            }
+        }
+        time++;
+        x++;
+    }
+}
+
+void move_bottom_to_top(int p,int q,int r,int z,int y,int x)
+{
+    int check[100][100][100]={0};
+    int time=0;
+    while(time<r)
+    {
+        int count=1;
+        // cout<<"--- ";
+        cout<<a[z][y][x]<<" ";
+        // cout<<"--- ";
+        // cout<<" z= "<<z<<" y= "<<y<<" x= "<<x<<endl;
+        check[z][y][x]=-1;
+        while(count<(p*r))
+        {
+            while(z+1<p && count<(p*r))
+            {
+                z=z+1;
+                if(check[z][y][x]!=0)
+                    break;
+                else{
+                    cout<<a[z][y][x]<<" ";
+                    //cout<<" z= "<<z<<" y= "<<y<<" x= "<<x<<endl;
+                    check[z][y][x]=-1;
+                    count++;
+                }
+            }
+            while(x+1<r && count<(p*r))
+            {
+                x=x+1;
+                if(check[z][y][x]!=0)
+                    break;
+                else{
+                    cout<<a[z][y][x]<<" ";
+                    //cout<<" z= "<<z<<" y= "<<y<<" x= "<<x<<endl;
+                    check[z][y][x]=-1;
+                    count++;
+                }
+            }
+            while(z-1>=0 && count<(p*r))
+            {
+                z=z-1;
+                if(check[z][y][x]!=0)
+                    break;
+                else{
+                    cout<<a[z][y][x]<<" ";
+                    //cout<<" z= "<<z<<" y= "<<y<<" x= "<<x<<endl;
+                    check[z][y][x]=-1;
+                    count++;
+                }
+            }
+            while(x-1>=0 && count<(p*r))
+            {
+                x=x-1;
+                if(check[z][y][x]!=0)
+                    break;
+                else{
+                    cout<<a[z][y][x]<<" ";
+                    //cout<<" z= "<<z<<" y= "<<y<<" x= "<<x<<endl;
+                    check[z][y][x]=-1;
+                    count++;
+                }
+            }
+        }
+        time++;
+        y--;
+    }
+}
+
+void move_top_to_bottom(int p,int q,int r,int z,int y,int x)
+{
+    int check[100][100][100]={0};
+    int time=0;
+    while(time<r)
+    {
+        int count=1;
+        // cout<<"--- ";
+        cout<<a[z][y][x]<<" ";
+        // cout<<"--- ";
+        // cout<<" z= "<<z<<" y= "<<y<<" x= "<<x<<endl;
+        check[z][y][x]=-1;
+        while(count<(p*r))
+        {
+            while(z+1<p && count<(p*r))
+            {
+                z=z+1;
+                if(check[z][y][x]!=0)
+                    break;
+                else{
+                    cout<<a[z][y][x]<<" ";
+                    //cout<<" z= "<<z<<" y= "<<y<<" x= "<<x<<endl;
+                    check[z][y][x]=-1;
+                    count++;
+                }
+            }
+            while(x+1<r && count<(p*r))
+            {
+                x=x+1;
+                if(check[z][y][x]!=0)
+                    break;
+                else{
+                    cout<<a[z][y][x]<<" ";
+                    //cout<<" z= "<<z<<" y= "<<y<<" x= "<<x<<endl;
+                    check[z][y][x]=-1;
+                    count++;
+                }
+            }
+            while(z-1>=0 && count<(p*r))
+            {
+                z=z-1;
+                if(check[z][y][x]!=0)
+                    break;
+                else{
+                    cout<<a[z][y][x]<<" ";
+                    //cout<<" z= "<<z<<" y= "<<y<<" x= "<<x<<endl;
+                    check[z][y][x]=-1;
+                    count++;
+                }
+            }
+            while(x-1>=0 && count<(p*r))
+            {
+                x=x-1;
+                if(check[z][y][x]!=0)
+                    break;
+                else{
+                    cout<<a[z][y][x]<<" ";
+                    //cout<<" z= "<<z<<" y= "<<y<<" x= "<<x<<endl;
+                    check[z][y][x]=-1;
+                    count++;
+                }
+            }
+        }
+        time++;
+        y++;
+    }
+}
+
+int main() {
+	int p,q,r;
+	cin>>p>>q>>r;
+	for(int i=0;i<p;i++)
+	{
+	    for(int j=0;j<q;j++)
+	    {
+	        for(int k=0;k<r;k++)
+	        {
+	            cin>>a[i][j][k];
+	        }
+	    }
+	}
+	int x,y,z;
+	cin>>z>>y>>x;
+	if(x==0 && y!=0 && y!=q-1)
+	{
+	    move_left_to_right(p,q,r,z,y,x);
+	}
+	else if(x==r-1 && y!=0 && y!=q-1)
+	{
+	    move_right_to_left(p,q,r,z,y,x);
+	}
+	else if(y==q-1 && x!=0 && x!=q-1)
+	{
+	    move_bottom_to_top(p,q,r,z,y,x);
+	}
+	else if(y==0 && x!=0 && x!=q-1)
+	{
+	    move_top_to_bottom(p,q,r,z,y,x);
+	}
+	return 0;
+}
