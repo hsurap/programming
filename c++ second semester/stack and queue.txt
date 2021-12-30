@@ -1,0 +1,300 @@
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+void reversestack(stack<int>&s)
+{
+    stack<int>s1,s2;
+    while(s.size()!=0)
+    {
+        s1.push(s.top());
+        s.pop();
+    }
+    while(s1.size()!=0)
+    {
+        s2.push(s1.top());
+        s1.pop();
+    }
+    while(s2.size()!=0)
+    {
+        s.push(s2.top());
+        s2.pop();
+    }
+}
+
+void reversequeue(queue<int>& q)
+{
+    stack<int> s;
+    while (!q.empty()) 
+    {
+        s.push(q.front());
+        q.pop();
+    }
+    while (!s.empty()) 
+    {
+        q.push(s.top());
+        s.pop();
+    }
+}
+
+int main() {
+	int n;
+	cin>>n;
+	int a[n];
+	for(int i=0;i<n;i++)
+	{
+	    cin>>a[i];
+	}
+	stack<int>s1,s2,s3,s4;
+	queue<int>q1,q2;
+	for(int i=0;i<n;i++)
+	{
+	    int put=0;
+	    if(s1.size()==0 || a[i]<s1.top() )
+	        s1.push(a[i]);
+	    else if (s2.size()==0 || a[i]>s2.top())
+	        s2.push(a[i]);
+	    else{
+	        int no=a[i];
+	        int diff1=abs(a[i]-s1.top());
+	        int diff2=abs(s2.top()-a[i]);
+	        if(diff1<=diff2)
+	        {
+	            while(s1.size()!=0 && s1.top()<no) 
+	            {
+	                q1.push(s1.top());
+	                s1.pop();
+	            }
+	            put=1;
+	            s1.push(no);
+	        }
+	        else{
+	            while(s2.size()!=0 && s2.top()>no) 
+	            {
+	                q1.push(s2.top());
+	                s2.pop();
+	                put=2;
+	            }
+	            s2.push(no);
+	        }
+	    }
+	    if(q1.size()!=0)
+	    {
+	        while(q1.size()!=0)
+	        {
+	            cout<<q1.front()<<" ";
+	            q2.push(q1.front());
+	            q1.pop();
+	        }
+	        cout<<endl;
+	    }
+	    if(s1.size()!=0)
+	    {
+	        while(s1.size()!=0)
+	        {
+	            cout<<s1.top()<<" ";
+	            s3.push(s1.top());
+	            s1.pop();
+	        }
+	        cout<<endl;
+	        while(s3.size()!=0)
+	        {
+	            s1.push(s3.top());
+	            s3.pop();
+	        }
+	    }
+	    if(s2.size()!=0)
+	    {
+	        while(s2.size()!=0)
+	        {
+	            cout<<s2.top()<<" ";
+	            s4.push(s2.top());
+	            s2.pop();
+	        }
+	        cout<<endl;
+	        while(s4.size()!=0)
+	        {
+	            s2.push(s4.top());
+	            s4.pop();
+	        }
+	    }
+	    if(q2.size()!=0)
+	    {
+	        reversequeue(q2);
+	        if(put==1)
+	        {
+	            while(q2.size()!=0)
+	            {
+	                s1.push(q2.front());
+	                q2.pop();
+	            }
+	        }
+	        else{
+	            while(q2.size()!=0)
+	            {
+	                s2.push(q2.front());
+	                q2.pop();
+	            }
+	        }
+	    }
+	}
+    reversestack(s2);
+	while(s1.size()!=0 && s2.size()!=0)
+	{
+	    if(s1.top()<s2.top())
+	    {
+	        q1.push(s1.top());
+	        s1.pop();
+	    }
+	    else{
+	        q1.push(s2.top());
+	        s2.pop();
+	    }
+	    if(q1.size()!=0)
+	    {
+	        while(q1.size()!=0)
+	        {
+	            cout<<q1.front()<<" ";
+	            q2.push(q1.front());
+	            q1.pop();
+	        }
+	        cout<<endl;
+	        while(q2.size()!=0)
+	        {
+	            q1.push(q2.front());
+	            q2.pop();
+	        }
+	    }
+	    if(s1.size()!=0)
+	    {
+	        while(s1.size()!=0)
+	        {
+	            cout<<s1.top()<<" ";
+	            s3.push(s1.top());
+	            s1.pop();
+	        }
+	        cout<<endl;
+	        while(s3.size()!=0)
+	        {
+	            s1.push(s3.top());
+	            s3.pop();
+	        }
+	    }
+	    if(s2.size()!=0)
+	    {
+	        while(s2.size()!=0)
+	        {
+	            cout<<s2.top()<<" ";
+	            s4.push(s2.top());
+	            s2.pop();
+	        }
+	        cout<<endl;
+	        while(s4.size()!=0)
+	        {
+	            s2.push(s4.top());
+	            s4.pop();
+	        }
+	    }
+	}
+	while(s1.size()!=0)
+	{
+	    q1.push(s1.top());
+	    s1.pop();
+	    if(q1.size()!=0)
+	    {
+	        while(q1.size()!=0)
+	        {
+	            cout<<q1.front()<<" ";
+	            q2.push(q1.front());
+	            q1.pop();
+	        }
+	        cout<<endl;
+	        while(q2.size()!=0)
+	        {
+	            q1.push(q2.front());
+	            q2.pop();
+	        }
+	    }
+	    if(s1.size()!=0)
+	    {
+	        while(s1.size()!=0)
+	        {
+	            cout<<s1.top()<<" ";
+	            s3.push(s1.top());
+	            s1.pop();
+	        }
+	        cout<<endl;
+	        while(s3.size()!=0)
+	        {
+	            s1.push(s3.top());
+	            s3.pop();
+	        }
+	    }
+	    if(s2.size()!=0)
+	    {
+	        while(s2.size()!=0)
+	        {
+	            cout<<s2.top()<<" ";
+	            s4.push(s2.top());
+	            s2.pop();
+	        }
+	        cout<<endl;
+	        while(s4.size()!=0)
+	        {
+	            s2.push(s4.top());
+	            s4.pop();
+	        }
+	    }
+	}
+	while(s2.size()!=0)
+	{
+	    q1.push(s2.top());
+	    s2.pop();
+	    if(q1.size()!=0)
+	    {
+	        while(q1.size()!=0)
+	        {
+	            cout<<q1.front()<<" ";
+	            q2.push(q1.front());
+	            q1.pop();
+	        }
+	        cout<<endl;
+	        while(q2.size()!=0)
+	        {
+	            q1.push(q2.front());
+	            q2.pop();
+	        }
+	    }
+	    if(s1.size()!=0)
+	    {
+	        while(s1.size()!=0)
+	        {
+	            cout<<s1.top()<<" ";
+	            s3.push(s1.top());
+	            s1.pop();
+	        }
+	        cout<<endl;
+	        while(s3.size()!=0)
+	        {
+	            s1.push(s3.top());
+	            s3.pop();
+	        }
+	    }
+	    if(s2.size()!=0)
+	    {
+	        while(s2.size()!=0)
+	        {
+	            cout<<s2.top()<<" ";
+	            s4.push(s2.top());
+	            s2.pop();
+	        }
+	        cout<<endl;
+	        while(s4.size()!=0)
+	        {
+	            s2.push(s4.top());
+	            s4.pop();
+	        }
+	    }
+	}
+	return 0;
+}
