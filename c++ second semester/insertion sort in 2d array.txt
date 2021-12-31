@@ -1,0 +1,116 @@
+#include <bits/stdc++.h>
+using namespace std;
+void sort(vector<int> &v, int n)
+{
+    int i, key, j;
+    for (i = 1; i < n; i++)
+    {
+        key = v[i];
+        j = i - 1;
+        while (j >= 0 && v[j] > key)
+        {
+            v[j + 1] = v[j];
+            j = j - 1;
+        }
+        v[j + 1] = key;
+    }
+}
+void print(vector<vector<int> > vt, int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < vt[i].size(); j++)
+        {
+            cout << vt[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+void iteration(vector<vector<int> > &li, int n)
+{
+    int k = 2 * (n - 1) - 1;
+    int key = 0;
+    vector<int> ind(n, 1);
+    while (k--)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            if (ind[i] < li[i].size())
+            {
+                sort(li[i], ind[i] + 1);
+                ind[i]++;
+            }
+        }
+        print(li, n);
+    }
+    k = 2 * (n - 1);
+    while (k--)
+    {
+        for (int i = 0; i < n; i++)
+        {
+        	int siz=1;
+        	if(i==n/2 && n%2==1) siz=1;
+        	else siz=li[i].size()+li[n-1-i].size();
+            if (ind[i] <= li[i].size() && ind[i]<siz)
+            {
+                if (i < n / 2 && !li[n - 1 - i].empty())
+                {
+                    li[i].push_back(li[n - 1 - i][0]);
+                    li[n - 1 - i].erase(li[n - 1 - i].begin());
+                }
+                sort(li[i], ind[i] + 1);
+                ind[i]++;
+            }
+        }
+        print(li, n);
+    }
+}
+void listi(vector<vector<int> > &li, vector<vector<int> > &vt, int n)
+{
+    vector<int> v;
+    for (int j = 0; j < n / 2; j++)
+    {
+        v.clear();
+        for (int i = j; i < n - j - 1; i++)
+            v.push_back(vt[i][j]);
+        for (int i = j; i < n - j - 1; i++)
+            v.push_back(vt[n - 1 - j][i]);
+        li.push_back(v);
+    }
+
+    for (int j = n / 2; j < n; j++)
+    {
+        v.clear();
+        if (n % 2 == 1 && j == n / 2)
+        {
+            v.push_back(vt[j][j]);
+        }
+        else
+        {
+            for (int i = j; i > n - 1 - j; i--)
+                v.push_back(vt[i][j]);
+            for (int i = j; i > n - 1 - j; i--)
+                v.push_back(vt[n - 1 - j][i]);
+        }
+        li.push_back(v);
+    }
+}
+int main()
+{
+    int n;
+    cin >> n;
+    vector<vector<int> > a(n, vector<int>(n));
+    vector<vector<int> > li;
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            cin >> a[i][j];
+        }
+    }
+    listi(li, a, n);
+    iteration(li, n);
+    return 0;
+    //here i have made all the sorted list in the whore array  
+    // but i am  not able to print 
+}
