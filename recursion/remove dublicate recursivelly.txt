@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+string func(string s,int i)
+{
+    string ans="";
+    if(s[i]=='\0')
+        return ans;
+    string small=func(s,i+1);
+    if(small.size()==0)
+    {
+        ans=s[i];
+        return ans;
+    }
+    else if(s[i]==small[0])
+    {
+        return small;
+    }
+    else{
+        return s[i]+small;
+    }
+}
+
+
+int main() {
+	string s="aaaabbcdeeeeffgggghhhhh";
+	string ans=func(s,0);
+	cout<<ans;
+	return 0;
+}
