@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+void func(string &s,int i)
+{
+    if(s[i]=='\0')
+        return ;
+    if(s[i]=='x')
+    {
+        for(int j=i;j<s.size()-1;j++)
+        {
+            s[j]=s[j+1];
+        }
+        s[s.size()-1]='\0';
+        func(s,i);
+    }
+    else{
+        
+        func(s,i+1);
+    }
+}
+
+
+int main() {
+	string s="xxhxhxjkxjikx";
+	func(s,0);
+	cout<<s;
+	return 0;
+}
