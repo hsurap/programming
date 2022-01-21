@@ -1,0 +1,21 @@
+#include<iostream>
+#include<bits/stdc++.h>
+using namespace std;
+string func(string s)
+{
+    if(s.size()==0 || s.size()==1)
+        return s;
+    string sa=func(s.substr(1));
+    if(sa[0]=='i' && s[0]=='p')
+        return "3.14" + sa.substr(1);
+    else
+        return s[0]+sa;
+}
+int main()
+{
+    string s;
+    cin>>s;
+    string ans=func(s);
+    cout<<ans;
+}
+
