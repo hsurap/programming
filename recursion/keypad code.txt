@@ -1,0 +1,45 @@
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+string aray[]={"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+
+int func(int no,string output[])
+{
+    if(no==0)
+    {
+        output[0]="";
+        return 1;
+    }
+    int small=func(no/10,output);
+    int digit=no%10;
+    int no_of_copy=aray[digit].size();
+    for(int i=0;i<no_of_copy-1;i++)
+    {
+        for(int j=0;j<small;j++)
+        {
+            output[small*(1+i)+j]=output[j];
+        }
+    }
+    string str=aray[no%10];
+    for(int i=0;i<no_of_copy;i++)
+    {
+        for(int j=0;j<small;j++)
+        {
+            output[i*small+j]=str[i]+output[i*small+j];
+        }
+    }
+    return 3*small;
+}
+
+int main() {
+	int no;
+	cin>>no;
+	string*output=new string[1000];
+	int ans=func(no,output);
+	for(int i=0;i<ans;i++)
+	{
+	    cout<<output[i]<<endl;
+	}
+	return 0;
+}
