@@ -1,0 +1,25 @@
+#include<iostream>
+#include<bits/stdc++.h>
+using namespace std;
+int func(int no)
+{
+
+    //cout<<no<<" ";
+    if(no<=3)
+        return no;
+    int time=sqrt(no);
+    int ans=0,fa=10000;
+    for(int i=1;i<=time;i++)
+    {
+        ans=1+func(no-i*i);
+        fa=min(fa,ans);
+    }
+    return fa;
+}
+int main()
+{
+    int n;
+    cin>>n;
+    int ans=func(n);
+    cout<<endl<<ans<<" "<<endl;;
+}
