@@ -1,0 +1,23 @@
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+int func(string s)
+{
+    if(s.size()==0 )
+        return 0;
+    int sa=func(s.substr(1));
+    int no=sa;
+    int count=0;
+    while(no>0)
+    {
+        no=no/10;
+        count++;
+    }
+    return (s[0]-'0')*pow(10,count) + sa;
+}
+int main() {
+	string s;
+	cin>>s;
+	cout<<func(s);
+	return 0;
+}
