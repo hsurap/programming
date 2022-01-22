@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+
+void func(string s,string output)
+{
+    if(s.size()== 0)
+    {
+        cout<<output<<endl;
+        return;
+    }
+        
+    //case-1
+    int no1=s[0]-'0';
+    char ch1='a'+no1-1;
+    // cout<<"->"<<ch1<<" ";
+    func(s.substr(1),output+ch1);
+    //case-2
+    if(s.size()>=2)
+    {
+        int no2=(s[0]-'0')*10+(s[1]-'0');
+        if(no2<=26)
+        {
+            char ch2='a'+no2-1;
+            // cout<<"=>"<<ch2<<" ";
+            func(s.substr(2),output+ch2);
+        }
+    }
+}
+
+int main() {
+	string s;
+	cin>>s;
+	string output="";
+	func(s,output);
+	return 0;
+}
