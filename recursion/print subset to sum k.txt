@@ -1,0 +1,44 @@
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+void func(int arr[],int n,int sum,vector<int>v)
+{
+    if(n==0 and sum!=0)
+        return;
+    if(sum==0)
+    {
+        for(int i=0;i<v.size();i++)
+        {
+            cout<<v[i]<<" ";
+        }
+        cout<<endl;
+        return;
+    }
+    if(arr[0]<=sum)
+    {
+        vector<int>sv;
+        for(int i=0;i<v.size();i++)
+        {
+            sv.push_back(v[i]);
+        }
+        sv.push_back(arr[0]);
+        func(arr+1,n-1,sum-arr[0],sv);
+    }
+    func(arr+1,n-1,sum,v);
+}
+
+int main() {
+	int n;
+	cin>>n;
+	int a[n];
+	for(int i=0;i<n;i++)
+	{
+	    cin>>a[i];
+	}
+	int s;
+	cin>>s;
+	vector<int>v;
+	func(a,n,s,v);
+	return 0;
+}
