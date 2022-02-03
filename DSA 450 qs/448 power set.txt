@@ -1,0 +1,51 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+ // } Driver Code Ends
+class Solution{
+	public:
+	    string func(string s,int no)
+	    {
+	        string st;
+	        int k=0;
+	        while(no>0)
+	        {
+	            if((no&1)==1)
+	            {
+	                st=st+s[k];
+	            }
+	            k++;
+	            no=(no>>1);
+	        }
+	        return st;
+	    }
+		vector<string> AllPossibleStrings(string s)
+		{
+		    vector<string>ans;
+		    int size=pow(2,s.size());
+		    for(int i=1;i<size;i++)
+		    {
+		        string st=func(s,i);
+		        ans.push_back(st);
+		    }
+		    sort(ans.begin(),ans.end());
+		    return ans;
+		}
+};
+
+// { Driver Code Starts.
+int main(){
+	int tc;
+	cin >> tc;
+	while(tc--){
+		string s;
+		cin >> s;
+		Solution ob;
+		vector<string> res = ob.AllPossibleStrings(s);
+		for(auto i : res)
+			cout << i <<" ";
+		cout << "\n";
+
+	}
+	return 0;
+}  // } Driver Code Ends
