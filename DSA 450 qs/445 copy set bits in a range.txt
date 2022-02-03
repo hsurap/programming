@@ -1,0 +1,11 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int x,y,l,r;
+    cin>>x>>y>>l>>r;
+    // cout<<((1<<r)-1)<<" ";
+    int ans= x | ( y & ( ((1<<r)-1)^((1<<(l-1))-1) ) );
+    cout<<ans<<endl;
+	return 0;
+}
