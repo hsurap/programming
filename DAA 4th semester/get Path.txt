@@ -1,0 +1,67 @@
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+vector<int>haspath(int**edges,int n,bool*visited,int st,int en)
+{
+    vector<int>v;
+    if(st==en)
+    {
+        v.push_back(en);
+        return v;
+    }
+    visited[st]=true;
+    for(int i=0;i<n;i++)
+    {
+        if(edges[st][i]==1 && visited[i]!=true)
+        {
+            vector<int>sv=haspath(edges,n,visited,i,en);
+            if(sv.size()!=0)
+            {
+                v.push_back(st);
+                for(int i=0;i<sv.size();i++)
+                {
+                    v.push_back(sv[i]);
+                    
+                }
+                return v;
+            }
+        }
+    }
+    return v;
+}
+
+int main() {
+	int n,e;
+	cin>>n>>e;
+	int**edges=new int*[n];
+	for(int i=0;i<n;i++)
+	{
+	    edges[i]=new int[n];
+	    for(int j=0;j<n;j++)
+	    {
+	        edges[i][j]=0;
+	    }
+	}
+	for(int i=0;i<e;i++)
+	{
+	    int sv,ev;
+	    cin>>sv>>ev;
+	    edges[sv][ev]=1;
+	    edges[ev][sv]=1;
+	}
+	bool *visited=new bool[n];
+	for(int i=0;i<n;i++)
+	{
+	    visited[i]=false;
+	}
+	int st,en;
+	cin>>st>>en;
+	vector<int>v;
+	v=haspath(edges,n,visited,st,en);
+	for(int i=0;i<v.size();i++)
+	{
+	    cout<<v[i]<<" ";
+	}
+	return 0;
+}
