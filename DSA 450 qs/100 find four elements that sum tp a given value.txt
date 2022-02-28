@@ -1,0 +1,78 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+ // } Driver Code Ends
+// User function template for C++
+
+class Solution{
+    public:
+    // arr[] : int input array of integers
+    // k : the quadruple sum required
+    vector<vector<int> > fourSum(vector<int> &a, int k) 
+    {
+       sort(a.begin(),a.end());
+       vector<vector<int>>v;
+       if(a.size()<=3)
+        return v;
+        
+        int n=a.size();
+        for(int i=0;i<n;i++)
+        {
+            for(int j=i+1;j<n;j++)
+            {
+                int rsum=k-a[i]-a[j];
+                int st=j+1;
+                int en=n-1;
+                while(st<en)
+                {
+                    if(a[st]+a[en]<rsum)
+                        st++;
+                    else if(a[st]+a[en]>rsum)
+                        en--;
+                    else{
+                        vector<int>sv;
+                        sv.push_back(a[i]);
+                        sv.push_back(a[j]);
+                        sv.push_back(a[st]);
+                        sv.push_back(a[en]);
+                        v.push_back(sv);
+                        while(st<en && a[st]==sv[2])st++;
+                        while(en>st && a[en]==sv[3])en--;
+                    }
+                    
+                }
+                while(j<n && a[j+1]==a[j])j++;
+            }
+            while(i<n && a[i+1]==a[i])i++;
+        }
+        return v;
+    }
+};
+
+// { Driver Code Starts.
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int n, k, i;
+        cin >> n >> k;
+        vector<int> a(n);
+        for (i = 0; i < n; i++) {
+            cin >> a[i];
+        }
+        Solution ob;
+        vector<vector<int> > ans = ob.fourSum(a, k);
+        for (auto &v : ans) {
+            for (int &u : v) {
+                cout << u << " ";
+            }
+            cout << "$";
+        }
+        if (ans.empty()) {
+            cout << -1;
+        }
+        cout << "\n";
+    }
+    return 0;
+}  // } Driver Code Ends
