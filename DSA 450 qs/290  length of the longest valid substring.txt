@@ -1,0 +1,55 @@
+// Initial template for C++
+#include <bits/stdc++.h>
+using namespace std;
+
+
+ // } Driver Code Ends
+// User function template for c++
+class Solution {
+  public:
+    int findMaxLen(string s) {
+        stack<char>st;
+        stack<int>index;
+        index.push(-1);
+        int maxx=0;
+        int curr=0;
+        int i=0;
+        while(i<s.size())
+        {
+            if(s[i]=='(')
+            {
+                index.push(i);
+                st.push('(');
+                i++;
+            }
+            else{
+                if(st.size()!=0)
+                {
+                    st.pop();
+                    index.pop();
+                    curr=i-index.top();
+                    maxx=max(curr,maxx);
+                }
+                else{
+                    index.push(i);
+                }
+                i++;
+            }
+        }
+        return maxx;
+    }
+};
+
+// { Driver Code Starts.
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        string S;
+        cin >> S; 
+        Solution ob;
+        cout << ob.findMaxLen(S) << endl;
+    }
+    return 0;
+}
+  // } Driver Code Ends
