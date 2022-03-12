@@ -1,0 +1,11 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+    int n1,n2,l,r;
+    cin>>n1>>n2>>l>>r;
+    int p1=(1<<(r-l+1))-1;
+    int p2=(p1<<(l-1));
+    int ans=(n2|(n1&p2));
+    cout<<ans<<endl;
+}
