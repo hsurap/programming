@@ -1,0 +1,16 @@
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& a, int target) {
+        int r=0,c=a[0].size()-1;
+        while(r<a.size() && c>=0)
+        {
+            if(a[r][c]==target)
+                return true;
+            else if(a[r][c]>target)
+                c--;
+            else
+                r++;
+        }
+        return false;
+    }
+};
