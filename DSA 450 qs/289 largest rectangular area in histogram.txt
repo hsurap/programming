@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+ // } Driver Code Ends
+class Solution {
+  public:
+    int countSquares(int N) {
+        int n=sqrt(N);
+        if((N*1.0) - (n*n*1.0) >0)
+            return n;
+        else
+            return n-1;
+    }
+};
+
+// { Driver Code Starts.
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int N;
+        
+        cin>>N;
+
+        Solution ob;
+        cout << ob.countSquares(N) << endl;
+    }
+    return 0;
+}  // } Driver Code Ends
