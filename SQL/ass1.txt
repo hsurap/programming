@@ -1,0 +1,30 @@
+-- create table student(
+--     rno number(5),
+--     name varchar(10),
+--     dob date,
+--     gender varchar(6),
+--     class number(5),
+--     college varchar(50),
+--     city varchar(50),
+--     marks number(3)
+-- );
+-- insert into student
+-- values(1,'gaveesh','07-apr-2002','male',2,'iit-I','fzr',55);
+-- insert into student
+-- values(5,'vaibhav','15-mar-2002','male',8,'uiet','fzr',25);
+-- insert into student
+-- values(9,'akshit','2-may-2002','male',7,'cu','amritsar',20);
+-- insert into student
+-- values(4,'yuvraj','25-dec-2002','male',4,'tiet','patiala',95);
+-- insert into student
+-- values(12,'siddharth','8-nov-2003','male',11,'iit-G','fzr',95);
+-- select * from student;
+-- desc student
+-- select rno,name,class from student where city = 'patiala';
+-- select * from student order by marks;
+-- update student set rno=9 where rno=5;
+-- update student set name='parush',city='fzr' where rno=9;
+-- insert into student
+-- values(9,'akshit','2-may-2002','male',7,'cu','amritsar',20);
+-- delete from student where city='patiala';
+-- delete from student where marks < 30;
