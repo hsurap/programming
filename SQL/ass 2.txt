@@ -1,0 +1,42 @@
+-- create table emp (
+--     empno number(10),
+--     ename varchar (50),
+--     job varchar(50),
+--     sal number(10),
+--     depno number(3),
+--     commission number(10)
+-- );
+-- insert into emp values(75612,'carras','clerk',1500,10,456);
+-- insert into emp values(7564,'barac','clerk',2200,20,NULL);
+-- insert into emp values(74123,'akshita','salesperson',3500,300,651);
+-- insert into emp values(79852,'rbtac','clerk',3500,40,NULL);
+-- insert into emp values(85235,'aakarsh','salesperson',2500,50,NULL);
+-- insert into emp values(756954,'akshit','manager',3500,20,563);
+-- select * from emp;
+-- select empno,ename from emp where depno=10;
+-- select ename from emp where job = 'clerk' and sal >2000;
+-- select ename,sal from emp where job='clerk' or job='salesperson';
+-- select * from emp where sal >2000 and sal<3000;
+-- select * from emp where depno in (10,20,30);
+-- select ename from emp where commission is null;
+-- select depno,sal from emp order by depno, sal desc;
+-- select ename from emp where ename like 'c%';
+-- select ename from emp where ename like '%c';
+-- select ename from emp where ename like '%a%a%' or ename  like '%A%A%';
+-- select ename from emp where ename like '_b%' or ename  like '_B%';
+-- select ename from emp where ename like '%a' or ename like '%A' or ename like 'A%' or ename like 'a%';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
