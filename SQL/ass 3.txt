@@ -1,0 +1,11 @@
+select sysdate from dual;
+select to_char(sysdate,'day') today_day from dual;
+select to_char(sysdate,'mm-year') from dual;
+select to_char(sysdate,'ddspth month year') from dual;
+select to_char(sysdate,'pm') from dual ;
+select next_day(sysdate,'friday') from dual;
+select round(sysdate,'month') from dual;
+select trunc(sysdate,'month') from dual;
+select round(sysdate,'year') from dual;
+select trunc(sysdate,'year') from dual;
+select to_char(sysdate+3,'day') from dual;
