@@ -1,0 +1,47 @@
+-- create table dept(
+--     depnoo int  primary key,
+--     dname varchar(50) ,
+--     check( dname in ('acc','comp','elect') )
+-- );
+
+
+-- create table emp(
+--     empno int  primary key,
+--     ename varchar(50) unique,
+--     job varchar(50) ,
+--     sal number(8) not null,
+--     depno int references dept(depnoo),
+--     check(job in ('prof','ap','lect'))
+-- );
+
+
+-- create table s
+-- (
+--     sno int primary key,
+--     sname varchar(50),
+--     city varchar(50)
+-- );
+
+-- create table p
+-- (
+--     pno int primary key,
+--     pname varchar(50),
+--     color varchar(50)
+-- );
+
+
+-- create table j
+-- (
+--     jno int primary key,
+--     jname varchar(50),
+--     city varchar(50)
+-- );
+
+-- create table spj
+-- (
+--     sno int references s(sno),
+--     pno int references p(pno),
+--     jno int references j(jno),
+--     constraint new_one primary key(sno,pno,jno),
+--     qty number(5)
+-- );
