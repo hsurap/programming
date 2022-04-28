@@ -1,0 +1,46 @@
+// Initial Template for C++
+
+#include <bits/stdc++.h>
+using namespace std;
+
+ // } Driver Code Ends
+// User function Template for C++
+
+class Solution{
+public:
+    int func(int i,int j,int arr[],int n)
+    {
+        if(i==j)
+            return 0;
+        int mini=INT_MAX;
+        for(int p=i;p<j;p++)
+        {
+            int step=arr[i-1]*arr[p]*arr[j]+func(i,p,arr,n)+func(p+1,j,arr,n);
+            mini=min(step,mini);
+        }
+        return mini;
+    }
+    int matrixMultiplication(int n, int arr[])
+    {
+        int ans=func(1,n-1,arr,n);
+        return ans;
+    }
+};
+
+// { Driver Code Starts.
+
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        int N;
+        cin>>N;
+        int arr[N];
+        for(int i = 0;i < N;i++)
+            cin>>arr[i];
+        
+        Solution ob;
+        cout<<ob.matrixMultiplication(N, arr)<<endl;
+    }
+    return 0;
+}  // } Driver Code Ends
