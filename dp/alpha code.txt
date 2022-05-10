@@ -1,55 +1,61 @@
 #include <iostream>
-#include<math.h>
 using namespace std;
-int func(int n)
+
+int func(int *arr,int n)
 {
-    if(n<1)
-        return 0;
-    if(n>=1 && n<=9)
-    {
+    if(n==0)
         return 1;
-    }
-    if(n>=10 && n<=26)
+    if(n==1)
+        return 1;
+    int ans=func(arr,n-1);
+    if( (arr[n-2]*10+arr[n-1]) <= 26)
+        ans+=func(arr,n-2);
+    return ans;
+}
+int func1(int *arr,int n,int *store)
+{
+    if(n==0 || n==1)
+        return 1;
+    if(store[n]!=0)
+        return store[n];
+    int ans=func(arr,n-1);
+    if( (arr[n-2]*10+arr[n-1]) <= 26)
+        ans+=func(arr,n-2);
+    store[n]=ans;
+    return ans;
+
+}
+
+int func2(int*arr,int n)
+{
+    if(n==0||n==1)
+        return 1;
+    int*store=new int[n+1];
+    store[0]=1;
+    store[1]=1;
+    for(int i=2;i<=n;i++)
     {
-        return 2;
+        store[i]=store[i-1];
+        if(arr[i-2]*10+arr[i-1]<=26)
+            store[i]+=store[i-2];
     }
-    int count=0;
-    int no=n;
-    while(no>0)
-    {
-        count++;
-        no=no/10;
-    }
-    //cout<<count<<" "<<endl;
-    int case1=0,case2=0;
-    if(count>=1)
-    {
-        int lastdigit=n/pow(10,count-1);
-        //cout<<lastdigit<<" ";
-        int power1=pow(10,count-1);
-        //cout<<power1<<" ";
-        if(lastdigit >=1 && lastdigit <=9)
-        {
-            case1=func(n % (lastdigit *power1 )  );
-            //cout<<case1<<" "<<endl;
-        }
-    }
-    if(count >=2)
-    {
-        int last2digit=n/pow(10,count-2);
-        int power2=pow(10,count-2);
-        if(last2digit >=1 && last2digit <=26)
-        {
-            case2=func(n % (last2digit* power2));
-            //cout<<case2<<" "<<endl;
-        }
-    }
-    return case1+case2;
+    return store[n];
 }
 int main() {
 	int n;
 	cin>>n;
-	int ans=func(n);
-	//cout<<endl<<endl<<endl;
-	cout<<ans;
+	int*arr=new int[n];
+	for(int i=0;i<n;i++)
+	{
+	    cin>>arr[i];
+	}
+	int*store=new int[n+1];
+	for(int i=0;i<=n;i++)
+	{
+	    store[i]=0;
+	}
+	cout<<func(arr,n)<<endl;
+	cout<<func1(arr,n,store)<<endl;
+	cout<<func2(arr,n)<<endl;
+	return 0;
 }
