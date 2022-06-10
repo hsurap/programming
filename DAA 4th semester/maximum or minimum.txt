@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main() {
+    // your code goes here
+    int T;
+    cin>>T;
+
+    while(T--)
+    {
+        int N;
+        cin>>N;
+        int i;
+        int max=INT_MIN;
+        int min=INT_MAX;
+
+            for(i=0;i<N;i++)
+                {
+                    int ans;
+                    cin>>ans;
+
+                    if(ans>=max)
+                    {
+                        max=ans;
+                    }
+                    if(ans<=min)
+                    {
+                        min=ans;
+                    }
+                    if(ans!=min && ans !=max){
+                        cout<<"NO"<<endl;
+                        break;
+                    }
+
+                }
+                if(i==N)
+                cout<<"YES"<<endl;
+
+    }
+    return 0;
+}
