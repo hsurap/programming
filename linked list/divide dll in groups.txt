@@ -1,0 +1,62 @@
+/*********************************************************
+
+    Following is the class structure of the Node class:
+
+    class Node
+	{
+	public:
+	    int data;
+	    Node *next;
+	    Node *prev;
+	    Node(int data)
+	    {
+	        this->data = data;
+	        this->next = NULL;
+	        this->prev = NULL;
+	    }
+	};
+
+************************************************************/
+#include<bits/stdc++.h>
+Node* func(Node * head)
+{
+    if(head==NULL)return head;
+    if(head->next==NULL)
+    {
+        head->next=NULL;
+        head->prev=NULL;
+        return head;
+    }
+    Node * sa=func(head->next);
+    head->next->next=head;
+    head->prev=head->next;
+    head->next=NULL;
+    return sa;
+}
+Node* reverseDLLInGroups(Node* head, int k)
+{	
+    if(head==NULL || head->next==NULL || k==0 || k==1)return head;
+    Node*temp=head;
+    int c=0;
+    while(temp!=NULL && c<k-1)
+    {
+        temp=temp->next;
+        c++;
+    }
+    if(temp==NULL)
+    {
+        Node*mypart=func(head);
+        return mypart;
+    }
+    else{
+        Node* temp1=temp->next;
+        temp->next=NULL;
+        if(temp1!=NULL)
+            temp1->prev=NULL;
+        Node*mypart=func(head);
+        Node* sa=reverseDLLInGroups(temp1,k);
+        head->next=sa;
+        if(sa!=NULL)sa->prev=head;
+        return mypart;
+    }
+}
