@@ -1,0 +1,38 @@
+class Solution 
+{
+    public:
+    //Function to find if there is a celebrity in the party or not
+    int celebrity(vector<vector<int> >& M, int n) 
+    {
+        
+        int ans=-1;
+        vector<int>v(n,0);
+        for(int i=0;i<n;i++)
+        {
+            int check=1;
+            if(v[i]==0)
+            {
+                for(int j=i+1;j<n;j++)
+                {
+                    if(M[i][j]==1)
+                        check=0;
+                    if(M[i][j]==0)
+                        v[j]=1;
+                }
+            }
+            else
+                check=2;
+            if(check==1)
+            {
+                ans=i;
+                break;
+            }
+        }
+        for(int k=0;k<n;k++)
+        {
+            if(k==ans)continue;
+            if(M[k][ans]==0)return -1;
+        }
+        return ans;
+    }
+};
