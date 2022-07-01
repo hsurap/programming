@@ -1,0 +1,27 @@
+typedef pair<int, pair<int,int>> pi;
+
+class Solution
+{
+    public:
+    //Function to merge k sorted arrays.
+    vector<int> mergeKArrays(vector<vector<int>> arr, int k)
+    {
+        vector<int>ans;
+        priority_queue<pi,vector<pi>,greater<pi>>pq;
+        for(int i=0;i<k;i++)
+        {
+            pq.push({arr[i][0],{i,0}});
+        }
+        while(pq.size()!=0)
+        {
+            pair<int,pair<int,int>>top=pq.top();
+            pq.pop();
+            ans.push_back(top.first);
+            if(top.second.second<k-1)
+            {
+                pq.push({arr[top.second.first][top.second.second+1],{top.second.first,top.second.second+1}});
+            }
+        }
+        return ans;
+    }
+};
