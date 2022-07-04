@@ -1,0 +1,33 @@
+pair<TreeNode<int>*,TreeNode<int>*>func(TreeNode<int>* root)
+{
+    if(root==NULL)return {NULL,NULL};
+    if(root->left==NULL && root->right==NULL)return {root,root};
+    TreeNode<int>*ln=root->left;
+    root->left=NULL;
+    TreeNode<int>*rn=root->right;
+    root->right=NULL;
+    pair<TreeNode<int>*,TreeNode<int>*>la=func(ln);
+    pair<TreeNode<int>*,TreeNode<int>*>ra=func(rn);
+    if(la.second!=NULL)
+    {
+        la.second->right=root;
+        if(ra.first==NULL)
+        {
+            return {la.first,root};
+        }
+        root->right=ra.first;
+        return {la.first,ra.second};
+        
+    }
+    else{
+        root->right=ra.first;
+        return {root,ra.second};
+    }
+}
+
+TreeNode<int>* flatten(TreeNode<int>* root)
+{
+
+    pair<TreeNode<int>*,TreeNode<int>*>ans=func( root);
+    return ans.first;
+}
