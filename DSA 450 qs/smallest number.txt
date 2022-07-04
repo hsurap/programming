@@ -1,0 +1,47 @@
+class Solution{
+public:
+    string smallestNumber(int s, int d){
+        string ans="";
+        int p=0;
+        int c=d;
+        while(p<d)
+        {
+            if(p==0)
+            {
+                if((c-1)*9>=s)
+                {
+                    char ch=1+'0';
+                    ans=ans+ch;
+                    s-=1;
+                }
+                else{
+                    int no=(s-((c-1)*9));
+                    if(no>9)return "-1";
+                    char ch=no+'0';
+                    ans=ans+ch;
+                    s-=(s-((c-1)*9));
+                }
+                p++;
+                c--;
+            }
+            else{
+                if((c-1)*9>=s)
+                {
+                    char ch=0+'0';
+                    ans=ans+ch;
+                    s-=0;
+                }
+                else{
+                    char ch=(s-((c-1)*9))+'0';
+                    ans=ans+ch;
+                    s-=(s-((c-1)*9));
+                }
+                p++;
+                c--;
+            }
+        }
+        return ans;
+        
+        
+    }
+};
