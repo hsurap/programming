@@ -1,0 +1,51 @@
+Node*merge(Node*l1,Node*l2)
+    {
+        if(l1==NULL)
+            return l2;
+        if(l2==NULL)
+            return l1;
+        Node *head=NULL;
+        Node *tail=NULL;
+        if((l1->data) <= (l2->data))
+        {
+            head=l1;
+            tail=l1;
+            l1=l1->bottom;
+        }
+        else{
+            head=l2;
+            tail=l2;
+            l2=l2->bottom;
+        }
+        while((l1!=NULL) && (l2!=NULL))
+        {
+            if(l1->data <= l2->data)
+            {
+                tail->bottom=l1;
+                l1=l1->bottom;
+                tail=tail->bottom;
+            }
+            else{
+                tail->bottom=l2;
+                l2=l2->bottom;
+                tail=tail->bottom;
+            }
+        }
+        if(l1!=NULL)
+        {
+            tail->bottom=l1;
+        }
+        if(l2!=NULL)
+        {
+            tail->bottom=l2;
+        }
+        return head;
+    }
+Node *flatten(Node *root)
+{
+   if(root==NULL || root->next==NULL)return root;
+   Node*sa=flatten(root->next);
+   root->next=NULL;
+   Node*fa=merge(root,sa);
+   return fa;
+}
