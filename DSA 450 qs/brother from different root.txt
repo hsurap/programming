@@ -1,0 +1,25 @@
+class Solution
+{
+public:
+    bool search(Node* root, int x)
+    {
+        if(root==NULL)return false;
+        if(root->data==x)return true;
+        if(x<root->data)
+            return search(root->left,x);
+        return search(root->right,x);
+    }
+    void inorder(Node* root1,Node* root2,int x , int &c)
+    {
+        if(root1==NULL)return ;
+        inorder(root1->left,root2,x,c);
+        if(search(root2,x-root1->data))c++;
+        inorder(root1->right,root2,x,c);
+    }
+    int countPairs(Node* root1, Node* root2, int x)
+    {
+        int c=0;
+        inorder(root1,root2,x,c);
+        return c;
+    }
+};
