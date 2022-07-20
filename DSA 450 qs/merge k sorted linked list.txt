@@ -1,0 +1,34 @@
+typedef pair<int,Node*> pi;
+class Solution{
+  public:
+    //Function to merge K sorted linked list.
+    Node * mergeKLists(Node *arr[], int k)
+    {
+        priority_queue<pi,vector<pi>,greater<pi>>pq;
+        for(int i=0;i<k;i++)
+        {
+            pq.push({arr[i]->data,arr[i]});
+        }
+        Node*head=NULL;
+        Node*tail=NULL;
+        while(pq.size()!=0)
+        {
+            pair<int,Node*>top=pq.top();
+            pq.pop();
+            if(head==NULL)
+            {
+                head=top.second;
+                tail=top.second;
+            }
+            else{
+                tail->next=top.second;
+                tail=tail->next;
+            }
+            if(top.second->next!=NULL)
+            {
+                pq.push({top.second->next->data,top.second->next});
+            }
+        }
+        return head;
+    }
+};
