@@ -1,0 +1,63 @@
+
+class Solution{   
+public:
+    string solve(int arr[], int n) {
+        sort(arr,arr+n);
+        string no1="";
+        string no2="";
+        for(int i=0;i<n;i++)
+        {
+            char ch=arr[i]+'0';
+            if(i%2==0)
+            {
+                no1=no1+ch;
+            }
+            else
+            {
+                no2=no2+ch;
+            }
+        }
+        string ans="";
+        int i=no1.size()-1;
+        int j=no2.size()-1;
+        int c=0;
+        while(i>=0 && j>=0)
+        {
+            int a=no1[i]-'0';
+            int b=no2[j]-'0';
+            int s=a+b+c;
+            int r=s%10;
+            c=s/10;
+            char nech=r+'0';
+            ans=nech+ans;
+            i--;
+            j--;
+        }
+        while(i>=0)
+        {
+            int a=no1[i]-'0';
+            int s=a+c;
+            int r=s%10;
+            c=s/10;
+            char nech=r+'0';
+            
+            ans=nech+ans;
+            i--;
+        }
+        while(j>=0)
+        {
+            int b=no2[j]-'0';
+            int s=b+c;
+            int r=s%10;
+            c=s/10;
+            char nech=r+'0';
+            ans=nech+ans;
+            j--;
+        }
+        char nech=c+'0';
+        ans=nech+ans;
+        int count=0;
+        while(ans[count]=='0')count++;
+        return ans.substr(count);
+    }
+};
