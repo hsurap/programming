@@ -1,0 +1,51 @@
+
+pair<bool,int>func(struct Node* root)
+{
+    if(root==NULL)return {true,0};
+    if(root->left==NULL && root->right==NULL)return {true,1};
+    pair<bool,int>la=func(root->left);
+    pair<bool,int>ra=func(root->right);
+    
+    pair<bool,int>ans;
+    if(la.first && ra.first && root->data > max(la.second.first,ra.second.first) && la.second.second>=ra.second.second)
+        ans.first=true;
+    else
+        ans.first=false;
+    ans.second.first=max(root->data,max(la.second.first,ra.second.first));
+    ans.second.second=la.second.second+ra.second.second+1;
+    return ans;
+}
+
+class Solution {
+  public:
+    bool isHeap(struct Node* tree) 
+    {
+        pair<bool,pair<int,int>>ans=func(tree);
+        return ans.first;
+    }
+};
+pair<bool,int>func(struct Node* root)
+{
+    if(root==NULL)return {true,0};
+    if(root->left==NULL && root->right==NULL)return {true,1};
+    pair<bool,int>la=func(root->left);
+    pair<bool,int>ra=func(root->right);
+    
+    pair<bool,int>ans;
+    if(la.first && ra.first && root->data > max(la.second.first,ra.second.first) && la.second.second>=ra.second.second)
+        ans.first=true;
+    else
+        ans.first=false;
+    ans.second.first=max(root->data,max(la.second.first,ra.second.first));
+    ans.second.second=la.second.second+ra.second.second+1;
+    return ans;
+}
+
+class Solution {
+  public:
+    bool isHeap(struct Node* tree) 
+    {
+        pair<bool,pair<int,int>>ans=func(tree);
+        return ans.first;
+    }
+};
