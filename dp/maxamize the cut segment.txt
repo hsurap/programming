@@ -1,0 +1,43 @@
+class Solution
+{
+    public:
+    //Function to find the maximum number of cuts.
+    // int func(int n, int x, int y, int z,vector<int>&dp)
+    // {
+    //     // if(n==0)return 0;
+    //     // if(n<x && n<y && n<z)return -100000;
+    //     // if(dp[n]!=-1)return dp[n];
+    //     int c1=-100000,c2=-100000,c3=-100000;
+    //     if(x<=n)
+    //         c1=1+func(n-x,x,y,z,dp);
+    //     if(y<=n)
+    //         c2=1+func(n-y,x,y,z,dp);
+    //     if(z<=n)
+    //         c3=1+func(n-z,x,y,z,dp);
+    //     return dp[n]= max(c1,max(c2,c3));
+    // }
+    int maximizeTheCuts(int n, int x, int y, int z)
+    {
+        vector<int>dp(n+1);
+        int mini=min(x,min(y,z));
+        dp[0]=0;
+        for(int i=1;i<mini;i++)
+        {
+            dp[i]=-100000;
+        }
+        for(int i=mini;i<=n;i++)
+        {
+            int c1=-100000,c2=-100000,c3=-100000;
+            if(x<=i)
+                c1=1+dp[i-x];
+            if(y<=i)
+                c2=1+dp[i-y];
+            if(z<=i)
+                c3=1+dp[i-z];
+            dp[i]=max(c1,max(c2,c3));
+        }
+        if(dp[n]<0)return 0;
+        else
+        return dp[n];
+    }
+};
