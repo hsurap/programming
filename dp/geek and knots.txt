@@ -1,0 +1,34 @@
+class Solution{
+public:
+    int mod=1000000007;
+    void func(int N,vector<vector<long long int>>&dp)
+    {
+        // dp[N+1][N+1];
+        if(N>0)
+            dp[0][0]=dp[1][0]=dp[1][1]=1;
+        for(int i=2;i<=N;i++)
+        {
+            dp[i][0]=1;
+            int j=1;
+            for(;j<i;j++)
+            {
+                dp[i][j]=((dp[i-1][j-1])%mod+(dp[i-1][j])%mod)%mod;
+            }
+            dp[i][i]=1;
+        }
+        // return dp[N+1][k+1];
+        
+    }
+    int knots(int M, int N, int K){
+        int no=max(M,N);
+        vector<vector<long long int>>dp(no+1,vector<long long int>(no+1));
+        func(no,dp);
+        // for(int i=0;i<=no;i++)
+        // {
+        //     for(int j=0;j<=no;j++)
+        //         cout<<dp[i][j]<<" ";
+        //     cout<<endl;
+        // }
+        return (((dp[N][K])%mod)*((dp[M][K])%mod))%mod;
+    }
+};
